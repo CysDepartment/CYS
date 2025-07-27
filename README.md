@@ -1,8 +1,6 @@
 © 2025 All rights reserved.
 
-This code may not be used, copied, republished, or modified in any form without my explicit written permission. I, Bashar Jehad Younis, am the sole owner of this code.
-Any unauthorized use will result in legal liability.
-Furthermore, I have contacted the Head of the Cybersecurity Department at Jordan University of Science and Technology and have obtained official approval to publish this website.
+It is strictly prohibited to use, copy, republish, or modify this code in any form without the express written consent of the owner and developer of the website, Bashar Jihad Younis. Any unauthorized use will expose the perpetrator to legal liability. Please note that I have contacted the Head of the Cybersecurity Department at the Jordan University of Science and Technology and obtained official approval to publish this website.
 
 © 2025 جميع الحقوق محفوظة.
 
