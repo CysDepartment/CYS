@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<!-- © 2025 All rights reserved.
+
+This code may not be used, copied, republished, or modified in any form without my explicit written permission. I, Bashar Jehad Younis, am the sole owner of this code.
+Any unauthorized use will result in legal liability.
+Furthermore, I have contacted the Head of the Cybersecurity Department at Jordan University of Science and Technology and have obtained official approval to publish this website.
+
+© 2025 جميع الحقوق محفوظة.
+
+يحظر استخدام هذا الكود أو نسخه أو إعادة نشره أو تعديله بأي شكل من الأشكال دون الحصول على موافقة خطية صريحة مني، أنا بشار جهاد يونس، صاحب هذا الكود.
+أي استخدام غير مصرح به سيعرض المخالف للمساءلة القانونية.
+كما أنني قد تواصلت مع رئيس قسم الأمن السيبراني في جامعة العلوم والتكنولوجيا الأردنية، وحصلت على الموافقة الرسمية لنشر هذا الموقع. -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self';
+              script-src 'self' https://cdnjs.cloudflare.com https://html2canvas.hertzen.com 'unsafe-inline';
+              style-src 'self' https://cdnjs.cloudflare.com 'unsafe-inline';
+              img-src 'self' data:;
+              font-src 'self' https://cdnjs.cloudflare.com;
+              connect-src 'self';
+              object-src 'none';
+              base-uri 'self';">
+    <meta name="description" content="Academic Staff">
+    <meta name="keywords" content="Academic Staff, Academic Staff in JUST, Cybersecurity Department Academic Staff">
+    <title>Academic Staff</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #0a0a2a;
+            --secondary-color: #00f3ff;
+            --accent-color: #ff00ff;
+            --text-color: #ffffff;
+            --card-bg: linear-gradient(145deg, rgba(20,20,60,0.95), rgba(30,30,80,0.95));
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--primary-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(100, 100, 200, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(255, 0, 255, 0.1) 0%, transparent 20%);
+        }
+
+        .selectable-text {
+            user-select: text;
+            cursor: text;
+        }
+
+        .stars-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .star {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            animation: twinkle linear infinite;
+            will-change: transform, opacity;
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1); }
+            100% { opacity: 0; transform: scale(0.3); }
+        }
+
+        #academic-page {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            padding: 20px;
+        }
+
+        .main-header {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            min-height: 100px;
+            background: rgba(0, 0, 0, 0.85);
+            border-bottom: 2px solid var(--secondary-color);
+            z-index: 10;
+            box-shadow: 0 5px 15px rgba(0, 243, 255, 0.3);
+            border-radius: 15px;
+            margin: 0 auto;
+            max-width: 1200px;
+            width: 95%;
+        }
+
+        .home-button {
+            position: absolute;
+            left: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--secondary-color);
+            font-size: 2rem;
+            text-decoration: none;
+            z-index: 11;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .home-button:hover {
+            color: var(--accent-color);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .title-container {
+            text-align: center;
+            z-index: 1;
+            padding: 0 20px;
+        }
+
+        .main-title {
+            font-size: 2.3rem;
+            background: linear-gradient(45deg, var(--secondary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(0, 243, 255, 0.5);
+            letter-spacing: 1.5px;
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+        }
+
+        .main-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--secondary-color), transparent);
+        }
+
+        .cards-container {
+            position: relative;
+            width: 100%;
+            height: 350px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            perspective: 1200px;
+            margin: 4rem auto;
+            max-width: 1200px;
+            width: 95%;
+        }
+
+        .carousel {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .doctor-card {
+            position: absolute;
+            width: 180px;
+            height: 250px;
+            left: 50%;
+            top: 50%;
+            transform-style: preserve-3d;
+            transition: all 0.5s ease-in-out;
+            cursor: default;
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 1rem;
+            border: 2px solid var(--secondary-color);
+            box-shadow: 0 10px 30px rgba(0, 243, 255, 0.7);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            backdrop-filter: blur(8px);
+            overflow: hidden;
+        }
+
+        .doctor-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0,243,255,0.2) 0%, transparent 70%);
+            z-index: -1;
+        }
+
+        .doctor-card:nth-child(1) { transform: translate(-50%, -50%) rotateY(0deg) translateZ(500px); }
+        .doctor-card:nth-child(2) { transform: translate(-50%, -50%) rotateY(36deg) translateZ(500px); }
+        .doctor-card:nth-child(3) { transform: translate(-50%, -50%) rotateY(72deg) translateZ(500px); }
+        .doctor-card:nth-child(4) { transform: translate(-50%, -50%) rotateY(108deg) translateZ(500px); }
+        .doctor-card:nth-child(5) { transform: translate(-50%, -50%) rotateY(144deg) translateZ(500px); }
+        .doctor-card:nth-child(6) { transform: translate(-50%, -50%) rotateY(180deg) translateZ(500px); }
+        .doctor-card:nth-child(7) { transform: translate(-50%, -50%) rotateY(216deg) translateZ(500px); }
+        .doctor-card:nth-child(8) { transform: translate(-50%, -50%) rotateY(252deg) translateZ(500px); }
+        .doctor-card:nth-child(9) { transform: translate(-50%, -50%) rotateY(288deg) translateZ(500px); }
+        .doctor-card:nth-child(10) { transform: translate(-50%, -50%) rotateY(324deg) translateZ(500px); }
+
+        .navigation {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: calc(100% + 120px);
+            display: flex;
+            justify-content: space-between;
+            padding: 0;
+            z-index: 100;
+            left: -60px;
+        }
+
+        .nav-btn {
+            background: linear-gradient(45deg, var(--secondary-color), var(--accent-color));
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            color: var(--primary-color);
+            font-size: 1.5em;
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.4);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-btn:hover {
+            transform: scale(1.15);
+            box-shadow: 0 0 30px var(--accent-color);
+        }
+
+        .doctor-image {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 0.8rem;
+            border: 2px solid var(--secondary-color);
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.5);
+            background: linear-gradient(45deg, var(--secondary-color), var(--accent-color));
+            padding: 3px;
+            -webkit-user-drag: none;
+            user-select: none;
+            pointer-events: none;
+        }
+
+        .doctor-name {
+            color: var(--secondary-color);
+            font-size: 0.75rem;
+            margin-bottom: 0.5rem;
+            padding-bottom: 0.4rem;
+            border-bottom: 2px solid var(--secondary-color);
+            line-height: 1.3;
+            text-align: center;
+            font-weight: 600;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .doctor-contact-section {
+            margin-top: auto;
+            padding-top: 0.5rem;
+        }
+        
+        .email-display {
+            font-size: 0.65rem;
+            color: var(--text-color);
+            text-align: center;
+            margin-bottom: 0.8rem;
+            padding: 6px 4px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            white-space: normal;
+            word-break: break-all;
+            line-height: 1.4;
+            min-height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .doctor-card:nth-child(3) .email-display {
+            font-size: 0.6rem;
+        }
+        
+        .email-actions {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: -5px;
+        }
+        
+        .email-action-btn {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(45deg, var(--secondary-color), var(--accent-color));
+            color: var(--primary-color);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 8px rgba(0,243,255,0.4);
+            font-size: 0.8rem;
+            text-decoration: none !important;
+        }
+        
+        .email-action-btn:hover {
+            transform: scale(1.15);
+            box-shadow: 0 0 15px var(--accent-color);
+        }
+        
+        .email-action-btn i {
+            text-decoration: none !important;
+        }
+
+        footer {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 1.5rem 3rem;
+            border-top: 2px solid var(--secondary-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100px;
+            margin-top: auto;
+            border-radius: 15px;
+            margin: 0 auto 20px;
+            max-width: 1200px;
+            width: 95%;
+        }
+
+        .copyright {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 300;
+            text-align: center;
+        }
+
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.85);
+            color: var(--secondary-color);
+            padding: 15px 25px;
+            border-radius: 30px;
+            border: 1px solid var(--secondary-color);
+            box-shadow: 0 5px 15px rgba(0, 243, 255, 0.5);
+            font-size: 1rem;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            display: none;
+            animation: none;
+        }
+
+        .notification.show {
+            opacity: 1;
+            display: flex;
+            animation: popIn 0.5s ease forwards;
+        }
+
+        @keyframes popIn {
+            0% { transform: translateX(-50%) translateY(100px); opacity: 0; }
+            100% { transform: translateX(-50%) translateY(0); opacity: 1; }
+        }
+
+        @media (max-width: 768px) {
+            .cards-container {
+                height: auto;
+                perspective: none;
+                flex-direction: column;
+                margin: 3rem 0;
+            }
+            
+            .carousel {
+                position: relative;
+                transform: none !important;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1.5rem;
+                height: auto;
+            }
+            
+            .doctor-card {
+                position: relative !important;
+                transform: none !important;
+                left: auto !important;
+                top: auto !important;
+                margin: 10px;
+                width: 180px;
+                height: 250px;
+                animation: cardAppear 0.6s ease-out forwards;
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            @keyframes cardAppear {
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+            
+            .navigation {
+                display: none;
+            }
+            
+            .main-title {
+                font-size: 1.8rem;
+            }
+            
+            footer {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+                padding: 1.5rem;
+            }
+            
+            .home-button {
+                position: absolute;
+                left: 20px;
+                top: 50%;
+                transform: translateY(-50%);
+                margin-bottom: 0;
+                font-size: 1.8rem;
+            }
+            
+            .main-header {
+                flex-direction: row;
+                padding-top: 1.5rem;
+                padding-bottom: 1.5rem;
+                position: relative;
+                justify-content: center;
+                min-height: 120px;
+            }
+        }
+
+        .department-name {
+            text-align: center;
+            margin-top: 1rem;
+            font-size: 1.2rem;
+            color: var(--accent-color);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        
+        .card-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="stars-background"></div>
+    <div id="academic-page">
+        <header class="main-header">
+            <a href="index.html" class="home-button">
+                <i class="fas fa-home"></i>
+            </a>
+            
+            <div class="title-container">
+                <h1 class="main-title selectable-text">Academic Staff</h1>
+                <div class="department-name selectable-text">Cybersecurity Department</div>
+            </div>
+        </header>
+
+        <div class="cards-container">
+            <div class="carousel">
+                <!-- Card 1 - Developed by: Bashar Jehad Younis -->
+                <div class="doctor-card">
+                    <div class="card-content">
+                        <img src="images\doctors\doctor1.jpg" alt="Dr. Qasem S. Abu Al-Haija" class="doctor-image" draggable="false">
+                        <h3 class="doctor-name selectable-text">Dr. Qasem S. Abu Al-Haija</h3>
+                    </div>
+                    <div class="email-display selectable-text">qsabuhaija@just.edu.jo</div>
+                    <div class="doctor-contact-section">
+                        <div class="email-actions">
+                            <a href="mailto:qsabuhaija@just.edu.jo" class="email-action-btn">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                            <button class="email-action-btn copy-btn" data-email="qsabuhaija@just.edu.jo" aria-label="Copy email">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                            <a href="https://www.qasem-abu-al-haija.com/" class="email-action-btn" target="_blank" aria-label="Visit website">
+                                <i class="fas fa-globe"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 - Developed by: Bashar Jehad Younis -->
+                <div class="doctor-card">
+                    <div class="card-content">
+                        <img src="images\doctors\doctor2.jpg" alt="Dr. Mazen G. AlWadi" class="doctor-image" draggable="false">
+                        <h3 class="doctor-name selectable-text">Dr. Mazen G. AlWadi</h3>
+                    </div>
+                    <div class="email-display selectable-text">mgalwadi@just.edu.jo</div>
+                    <div class="doctor-contact-section">
+                        <div class="email-actions">
+                            <a href="mailto:mgalwadi@just.edu.jo" class="email-action-btn">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                            <button class="email-action-btn copy-btn" data-email="mgalwadi@just.edu.jo" aria-label="Copy email">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                            <a href="https://www.just.edu.jo/ar/eportfolio/Pages/default.aspx?email=mgalwadi" class="email-action-btn" target="_blank" aria-label="Visit website">
+                                <i class="fas fa-globe"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 - Developed by: Bashar Jehad Younis -->
+                <div class="doctor-card">
+                    <div class="card-content">
+                        <img src="images\doctors\doctor3.jpg" alt="Dr. Khaled M. Alrawashdeh" class="doctor-image" draggable="false">
+                        <h3 class="doctor-name selectable-text">Dr. Khaled M. Alrawashdeh</h3>
+                    </div>
+                    <div class="email-display selectable-text">kmalrawashdeh@just.edu.jo</div>
+                    <div class="doctor-contact-section">
+                        <div class="email-actions">
+                            <a href="mailto:kmalrawashdeh@just.edu.jo" class="email-action-btn">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                            <button class="email-action-btn copy-btn" data-email="kmalrawashdeh@just.edu.jo" aria-label="Copy email">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                            <a href="https://www.just.edu.jo/ar/eportfolio/Pages/Default.aspx?email=kmalrawashdeh" class="email-action-btn" target="_blank" aria-label="Visit website">
+                                <i class="fas fa-globe"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4 - Developed by: Bashar Jehad Younis -->
+                <div class="doctor-card">
+                    <div class="card-content">
+                        <img src="images\doctors\doctor4.jpg" alt="Dr. Heba Z. Alawneh" class="doctor-image" draggable="false">
+                        <h3 class="doctor-name selectable-text">Dr. Heba Z. Alawneh</h3>
+                    </div>
+                    <div class="email-display selectable-text">hzalawneh@just.edu.jo</div>
+                    <div class="doctor-contact-section">
+                        <div class="email-actions">
+                            <a href="mailto:hzalawneh@just.edu.jo" class="email-action-btn">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                            <button class="email-action-btn copy-btn" data-email="hzalawneh@just.edu.jo" aria-label="Copy email">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                            <a href="https://www.just.edu.jo/ar/eportfolio/Pages/Default.aspx?email=hzalawneh" class="email-action-btn" target="_blank" aria-label="Visit website">
+                                <i class="fas fa-globe"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 5 - Developed by: Bashar Jehad Younis -->
+                <div class="doctor-card">
+                    <div class="card-content">
+                        <img src="images\doctors\doctor5.jpg" alt="Dr. Hala M. Hamadeh" class="doctor-image" draggable="false">
+                        <h3 class="doctor-name selectable-text">Dr. Hala M. Hamadeh</h3>
+                    </div>
+                    <div class="email-display selectable-text">hmhamadeh@just.edu.jo</div>
+                    <div class="doctor-contact-section">
+                        <div class="email-actions">
+                            <a href="mailto:hmhamadeh@just.edu.jo" class="email-action-btn">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                            <button class="email-action-btn copy-btn" data-email="hmhamadeh@just.edu.jo" aria-label="Copy email">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                            <a href="https://www.just.edu.jo/ar/eportfolio/Pages/Default.aspx?email=hmhamadeh" class="email-action-btn" target="_blank" aria-label="Visit website">
+                                <i class="fas fa-globe"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 6 - Developed by: Bashar Jehad Younis -->
+                <div class="doctor-card">
+                    <div class="card-content">
+                        <img src="images\doctors\doctor6.jpg" alt="Dr. Omar S. Almousa" class="doctor-image" draggable="false">
+                        <h3 class="doctor-name selectable-text">Dr. Omar S. Almousa</h3>
+                    </div>
+                    <div class="email-display selectable-text">osalmousa@just.edu.jo</div>
+                    <div class="doctor-contact-section">
+                        <div class="email-actions">
+                            <a href="mailto:osalmousa@just.edu.jo" class="email-action-btn">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                            <button class="email-action-btn copy-btn" data-email="osalmousa@just.edu.jo" aria-label="Copy email">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                            <a href="https://www.just.edu.jo/ar/eportfolio/Pages/Default.aspx?email=osalmousa" class="email-action-btn" target="_blank" aria-label="Visit website">
+                                <i class="fas fa-globe"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 7 - Developed by: Bashar Jehad Younis -->
+                <div class="doctor-card">
+                    <div class="card-content">
+                        <img src="images\doctors\doctor7.jpg" alt="Dr. Malik G. Qasaimeh" class="doctor-image" draggable="false">
+                        <h3 class="doctor-name selectable-text">Dr. Malik G. Qasaimeh</h3>
+                    </div>
+                    <div class="email-display selectable-text">mgqasaimeh@just.edu.jo</div>
+                    <div class="doctor-contact-section">
+                        <div class="email-actions">
+                            <a href="mailto:mgqasaimeh@just.edu.jo" class="email-action-btn">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                            <button class="email-action-btn copy-btn" data-email="mgqasaimeh@just.edu.jo" aria-label="Copy email">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                            <a href="https://www.just.edu.jo/ar/eportfolio/Pages/Default.aspx?email=mgqasaimeh" class="email-action-btn" target="_blank" aria-label="Visit website">
+                                <i class="fas fa-globe"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 8 - Developed by: Bashar Jehad Younis -->
+                <div class="doctor-card">
+                    <div class="card-content">
+                        <img src="images\doctors\doctor8.jpg" alt="Dr. Ahmad I. Al-Aiad" class="doctor-image" draggable="false">
+                        <h3 class="doctor-name selectable-text">Dr. Ahmad I. Al-Aiad</h3>
+                    </div>
+                    <div class="email-display selectable-text">aiaiad@just.edu.jo</div>
+                    <div class="doctor-contact-section">
+                        <div class="email-actions">
+                            <a href="mailto:aiaiad@just.edu.jo" class="email-action-btn">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                            <button class="email-action-btn copy-btn" data-email="aiaiad@just.edu.jo" aria-label="Copy email">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                            <a href="https://www.just.edu.jo/ar/eportfolio/Pages/Default.aspx?email=aiaiad" class="email-action-btn" target="_blank" aria-label="Visit website">
+                                <i class="fas fa-globe"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 9 - Developed by: Bashar Jehad Younis -->
+                <div class="doctor-card">
+                    <div class="card-content">
+                        <img src="images\doctors\doctor9.jpg" alt="Dr. Muneer O. Bani Yasin" class="doctor-image" draggable="false">
+                        <h3 class="doctor-name selectable-text">Dr. Muneer O. Bani Yasin</h3>
+                    </div>
+                    <div class="email-display selectable-text">masadeh@just.edu.jo</div>
+                    <div class="doctor-contact-section">
+                        <div class="email-actions">
+                            <a href="mailto:masadeh@just.edu.jo" class="email-action-btn">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                            <button class="email-action-btn copy-btn" data-email="masadeh@just.edu.jo" aria-label="Copy email">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                            <a href="https://www.just.edu.jo/ar/eportfolio/Pages/Default.aspx?email=masadeh" class="email-action-btn" target="_blank" aria-label="Visit website">
+                                <i class="fas fa-globe"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 10 - Developed by: Bashar Jehad Younis -->
+                <div class="doctor-card">
+                    <div class="card-content">
+                        <img src="images\doctors\doctor10.jpg" alt="Dr. Fatima M. Abuhjeela" class="doctor-image" draggable="false">
+                        <h3 class="doctor-name selectable-text">Dr. Fatima M. Abuhjeela</h3>
+                    </div>
+                    <div class="email-display selectable-text">fmabuhjeela@just.edu.jo</div>
+                    <div class="doctor-contact-section">
+                        <div class="email-actions">
+                            <a href="mailto:fmabuhjeela@just.edu.jo" class="email-action-btn">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                            <button class="email-action-btn copy-btn" data-email="fmabuhjeela@just.edu.jo" aria-label="Copy email">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                            <a href="https://www.just.edu.jo/ar/eportfolio/Pages/Default.aspx?email=fmabuhjeela" class="email-action-btn" target="_blank" aria-label="Visit website">
+                                <i class="fas fa-globe"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="navigation">
+                <button class="nav-btn prev-btn" aria-label="Previous card"><i class="fas fa-chevron-left"></i></button>
+                <button class="nav-btn next-btn" aria-label="Next card"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+
+        <footer>
+            <p class="copyright">&copy; 2025 Cybersecurity Department - All Rights Reserved</p>
+        </footer>
+    </div>
+
+    <div class="notification" id="notification">
+        <i class="fas fa-check-circle"></i>
+        <span>Email copied to clipboard!</span>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Starfield animation - Developed by: Bashar Jehad Younis
+            const starsContainer = document.querySelector('.stars-background');
+            const starCount = 100;
+            
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.cssText = `
+                    width: ${Math.random() * 3}px;
+                    height: ${Math.random() * 3}px;
+                    left: ${Math.random() * 100}%;
+                    top: ${Math.random() * 100}%;
+                    animation: twinkle ${2 + Math.random() * 3}s ${Math.random() * 5}s infinite;
+                `;
+                starsContainer.appendChild(star);
+            }
+
+            // Carousel logic - Developed by: Bashar Jehad Younis
+            const carousel = document.querySelector('.carousel');
+            const prevBtn = document.querySelector('.prev-btn');
+            const nextBtn = document.querySelector('.next-btn');
+            let currentAngle = 0;
+            const angleIncrement = 36;
+            let isAnimating = false;
+
+            function rotateCarousel(direction) {
+                if (isAnimating) return;
+                
+                isAnimating = true;
+                currentAngle += direction * angleIncrement;
+                carousel.style.transform = `rotateY(${currentAngle}deg)`;
+                
+                setTimeout(() => {
+                    isAnimating = false;
+                }, 800);
+            }
+
+            prevBtn.addEventListener('click', () => {
+                rotateCarousel(1);
+            });
+
+            nextBtn.addEventListener('click', () => {
+                rotateCarousel(-1);
+            });
+            
+            // Copy email functionality - Developed by: Bashar Jehad Younis
+            const notification = document.getElementById('notification');
+            
+            document.querySelectorAll('.copy-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const email = this.getAttribute('data-email');
+                    navigator.clipboard.writeText(email).then(() => {
+                        // Show notification - Developed by: Bashar Jehad Younis
+                        notification.classList.add('show');
+                        
+                        // Hide notification after 3 seconds - Developed by: Bashar Jehad Younis
+                        setTimeout(() => {
+                            notification.classList.remove('show');
+                        }, 3000);
+                    }).catch(err => {
+                        console.error('Failed to copy: ', err);
+                        notification.querySelector('span').textContent = 'Failed to copy email!';
+                        notification.classList.add('show');
+                        
+                        setTimeout(() => {
+                            notification.classList.remove('show');
+                        }, 3000);
+                    });
+                });
+            });
+
+            // Mobile card animations - Developed by: Bashar Jehad Younis
+            if (window.innerWidth <= 768) {
+                const cards = document.querySelectorAll('.doctor-card');
+                cards.forEach((card, index) => {
+                    card.style.animationDelay = `${index * 0.1}s`;
+                });
+            }
+            
+            // Prevent right-clicking on doctors images only - Developed by: Bashar Jehad Younis
+            document.querySelectorAll('.doctor-image').forEach(img => {
+                img.addEventListener('contextmenu', function(e) {
+                    e.preventDefault();
+                });
+            });
+        });
+    </script>
+</body>
+<!-- Developed by: Bashar Jehad Younis -->
+</html>

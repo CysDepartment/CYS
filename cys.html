@@ -1,0 +1,3211 @@
+<!DOCTYPE html>
+<!-- © 2025 All rights reserved.
+
+This code may not be used, copied, republished, or modified in any form without my explicit written permission. I, Bashar Jehad Younis, am the sole owner of this code.
+Any unauthorized use will result in legal liability.
+Furthermore, I have contacted the Head of the Cybersecurity Department at Jordan University of Science and Technology and have obtained official approval to publish this website.
+
+© 2025 جميع الحقوق محفوظة.
+
+يحظر استخدام هذا الكود أو نسخه أو إعادة نشره أو تعديله بأي شكل من الأشكال دون الحصول على موافقة خطية صريحة مني، أنا بشار جهاد يونس، صاحب هذا الكود.
+أي استخدام غير مصرح به سيعرض المخالف للمساءلة القانونية.
+كما أنني قد تواصلت مع رئيس قسم الأمن السيبراني في جامعة العلوم والتكنولوجيا الأردنية، وحصلت على الموافقة الرسمية لنشر هذا الموقع. -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self';
+              script-src 'self' https://cdnjs.cloudflare.com https://html2canvas.hertzen.com 'unsafe-inline';
+              style-src 'self' https://cdnjs.cloudflare.com 'unsafe-inline';
+              img-src 'self' data:;
+              font-src 'self' https://cdnjs.cloudflare.com;
+              connect-src 'self';
+              object-src 'none';
+              base-uri 'self';">
+    <meta name="description" content="Cybersecurity Specialization">
+    <meta name="keywords" content="Cybersecurity, CYS, Cybersecurity Specialization">          
+    <title>Cybersecurity</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #0a0a2a;
+            --secondary-color: #00f3ff;
+            --accent-color: #ff00ff;
+            --text-color: #ffffff;
+            --book-color: #9d4edd;
+            --scrollbar-thumb: #00f3ff;
+            --scrollbar-track: rgba(0, 0, 0, 0.3);
+            --video-thumb-1: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
+            --video-thumb-2: linear-gradient(135deg, #3a7bd5, #00d2ff, #3a7bd5);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: #000;
+            color: var(--text-color);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stars-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .star {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            animation: twinkle linear infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0; transform: scale(0.1); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+
+        .main-header {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            min-height: 80px;
+            background: rgba(0, 0, 0, 0.9);
+            border-bottom: 1px solid var(--secondary-color);
+            z-index: 2;
+        }
+
+        .home-button {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--secondary-color);
+            font-size: 1.8rem;
+            text-decoration: none;
+            z-index: 3;
+            transition: all 0.3s ease;
+        }
+        
+        .home-button:hover {
+            color: var(--accent-color);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .title-container {
+            text-align: center;
+            z-index: 1;
+            padding: 0 20px;
+        }
+
+        .main-title {
+            font-size: 3.2rem;
+            background: linear-gradient(45deg, var(--secondary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 15px rgba(0, 243, 255, 0.4);
+            letter-spacing: 1.5px;
+        }
+
+        .buttons-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            padding: 4rem;
+            position: relative;
+            min-height: 60vh;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex: 1;
+        }
+
+        .cyber-button {
+            padding: 1rem 1.5rem;
+            border: 2px solid var(--secondary-color);
+            border-radius: 15px;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 1rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-size: 1.1rem;
+            text-transform: capitalize;
+            margin: 1rem;
+            position: relative;
+            z-index: 2;
+            text-decoration: none;
+            color: inherit;
+            min-width: 180px;
+            min-height: 100px;
+            text-align: left;
+        }
+
+        .cyber-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 25px var(--accent-color);
+            background: rgba(0, 243, 255, 0.1);
+        }
+
+        .cyber-button i {
+            font-size: 1.8em;
+            color: var(--secondary-color);
+            min-width: 40px;
+            text-align: center;
+        }
+
+        .model-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+            perspective: 1000px;
+            z-index: 1;
+        }
+
+        .cyber-lock {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            animation: float 6s infinite ease-in-out;
+        }
+
+        .lock-body {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 50% 50%, 
+                #8A2BE2, 
+                rgba(138, 43, 226, 0.3));
+            position: absolute;
+            left: calc(50% - 90px);
+            top: calc(50% - 90px);
+            border: 3px solid #8A2BE2;
+            box-shadow: 0 0 50px rgba(138, 43, 226, 0.5);
+        }
+
+        .cys-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #8A2BE2;
+            text-shadow: 0 0 15px rgba(138, 43, 226, 0.5);
+            z-index: 2;
+            font-family: 'Courier New', monospace;
+            background: linear-gradient(45deg, #8A2BE2, #9d4edd);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .cys-text:hover {
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        .hex-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            animation: orbit 25s linear infinite;
+        }
+
+        .hex-element {
+            position: absolute;
+            color: #8A2BE2;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            font-size: 0.9em;
+            text-shadow: 0 0 10px rgba(138, 43, 226, 0.8);
+            left: 50%;
+            top: 50%;
+            transform-origin: 0 0;
+        }
+
+        @keyframes orbit {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .hacked-effect {
+            position: absolute;
+            width: 60%;
+            height: 60%;
+            background: radial-gradient(circle, rgba(138, 43, 226, 0.1) 10%, transparent 40%);
+            animation: pulse 2s infinite;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .dropdown-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            left: 100%;
+            top: -10px;
+            min-width: 180px;
+            background: rgba(0, 0, 0, 0.95);
+            border: 2px solid var(--secondary-color);
+            border-radius: 0 15px 15px 15px;
+            padding: 0.8rem;
+            flex-direction: column;
+            gap: 0.7rem;
+            z-index: 1000;
+            transform: translateX(20px);
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 0 25px rgba(0, 243, 255, 0.2);
+        }
+
+        .dropdown-container.active .dropdown-menu {
+            display: flex;
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        .dropdown-button {
+            padding: 0.7rem;
+            border: 1px solid var(--secondary-color);
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            color: var(--text-color);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            font-size: 0.85rem;
+            margin: 0.15rem 0;
+            max-width: 200px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .dropdown-button:hover {
+            background: rgba(0, 243, 255, 0.15) !important;
+            box-shadow: 0 0 25px var(--secondary-color);
+            transform: translateX(5px);
+        }
+
+        .dropdown-button::after {
+            content: '';
+            position: absolute;
+            left: -100%;
+            top: 0;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(0, 243, 255, 0.4),
+                transparent
+            );
+            transition: 0.5s;
+        }
+
+        .dropdown-button:hover::after {
+            left: 100%;
+        }
+
+        /* Book menu styles - Developed by: Bashar Jehad Younis */
+        .book-menu {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.95);
+            border: 2px solid var(--book-color);
+            border-radius: 15px;
+            padding: 1.5rem;
+            z-index: 2000;
+            max-width: 90%;
+            width: 600px;
+            box-shadow: 0 0 40px rgba(157, 78, 221, 0.5);
+            animation: bookMenuEntrance 0.4s ease-out;
+        }
+
+        .book-menu.active {
+            display: block;
+        }
+
+        .book-menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--book-color);
+        }
+
+        .book-menu-title {
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+        }
+
+        .close-book-menu {
+            background: none;
+            border: none;
+            color: var(--secondary-color);
+            font-size: 1.8rem;
+            cursor: pointer;
+        }
+
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 1rem;
+            max-height: 60vh;
+            padding: 0.5rem;
+            overflow-y: auto;
+        }
+
+        .books-grid::-webkit-scrollbar {
+            width: 10px;
+            background-color: var(--scrollbar-track);
+            border-radius: 10px;
+        }
+
+        .books-grid::-webkit-scrollbar-thumb {
+            background-color: var(--scrollbar-thumb);
+            border-radius: 10px;
+            border: 2px solid var(--primary-color);
+            box-shadow: 0 0 5px rgba(0, 243, 255, 0.5);
+        }
+
+        .books-grid::-webkit-scrollbar-thumb:hover {
+            background-color: var(--accent-color);
+            box-shadow: 0 0 10px rgba(255, 0, 255, 0.7);
+        }
+
+        .book-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem;
+            border-radius: 10px;
+            background: rgba(157, 78, 221, 0.1);
+            border: 1px solid var(--book-color);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .book-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(157, 78, 221, 0.3);
+            background: rgba(157, 78, 221, 0.2);
+        }
+
+        .book-icon {
+            font-size: 2.5rem;
+            color: var(--book-color);
+        }
+
+        .book-title {
+            font-size: 0.8rem;
+            text-align: center;
+            color: var(--text-color);
+        }
+
+        .book-card {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.95);
+            border: 2px solid var(--secondary-color);
+            border-radius: 15px;
+            padding: 2rem;
+            z-index: 3000;
+            max-width: 90%;
+            width: 500px;
+            box-shadow: 0 0 40px rgba(0, 243, 255, 0.5);
+            animation: bookMenuEntrance 0.4s ease-out;
+        }
+
+        .book-card.active {
+            display: block;
+        }
+
+        @keyframes bookMenuEntrance {
+            from { transform: translate(-50%, -50%) scale(0.8); opacity: 0; }
+            to { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotateX(0) rotateY(0); }
+            50% { transform: translateY(-20px) rotateX(5deg) rotateY(5deg); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.2); }
+        }
+
+        /* Footer styles - Developed by: Bashar Jehad Younis */
+        footer {
+            background: #000;
+            padding: 1.5rem 2rem;
+            border-top: 1px solid var(--secondary-color);
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            min-height: 80px;
+            width: 100%;
+            margin-top: 50px;
+        }
+
+        .copyright {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            font-weight: 300;
+            text-align: center;
+        }
+
+        .developer-credit {
+            text-align: left;
+            margin-bottom: 5px;
+        }
+
+        .social-buttons {
+            margin-bottom: 5px;
+        }
+
+        .wrapper {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            gap: 15px;
+        }
+
+        .icon {
+            position: relative;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--secondary-color), var(--accent-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 243, 255, 0.3);
+        }
+
+        .icon i {
+            color: var(--primary-color);
+            font-size: 1.2em;
+        }
+
+        .icon:hover {
+            background: #1877f2;
+        }
+
+        .cyber-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .cyber-modal-content {
+            position: relative;
+            background: var(--primary-color);
+            padding: 2rem;
+            border: 2px solid var(--secondary-color);
+            border-radius: 15px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 0 30px var(--accent-color);
+            animation: modalEntrance 0.4s ease-out;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            color: var(--secondary-color);
+            font-size: 28px;
+            cursor: pointer;
+        }
+
+        .cyber-modal-content h3 {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            font-size: 1.5em;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .cyber-modal-content ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 1.5rem;
+        }
+
+        .cyber-modal-content li {
+            margin: 0.8rem 0;
+            color: var(--text-color);
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .cyber-modal-content li:before {
+            content: none;
+        }
+
+        @keyframes modalEntrance {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .book-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--secondary-color);
+        }
+
+        .book-card-title {
+            font-size: 1.8rem;
+            color: var(--secondary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .book-actions-container {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+
+        .book-action-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 15px 5px;
+            border: 1px solid var(--secondary-color);
+            border-radius: 8px;
+            background: rgba(0, 0, 0, 0.3);
+            color: var(--text-color);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .book-action-btn:hover {
+            background: rgba(0, 243, 255, 0.15);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 243, 255, 0.2);
+        }
+
+        .book-action-btn i {
+            font-size: 1.6rem;
+            margin-bottom: 8px;
+            color: var(--secondary-color);
+        }
+
+        .book-action-btn span {
+            font-size: 0.75rem;
+            text-align: center;
+        }
+
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--secondary-color), transparent);
+            margin: 25px 0;
+            position: relative;
+        }
+
+        .section-divider:after {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 10px;
+            height: 10px;
+            background: var(--secondary-color);
+            border-radius: 50%;
+        }
+
+        .videos-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .video-item {
+            border-radius: 10px;
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--secondary-color);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .video-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0, 243, 255, 0.3);
+        }
+
+        .video-thumbnail {
+            width: 100%;
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .video-thumbnail:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0, 243, 255, 0.2), rgba(255, 0, 255, 0.2));
+        }
+
+        .video-thumbnail i {
+            font-size: 3rem;
+            color: var(--text-color);
+            z-index: 1;
+            opacity: 0.7;
+        }
+
+        .video-title {
+            padding: 12px;
+            text-align: center;
+            font-size: 0.9rem;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        /* Mobile Responsive Adjustments - Developed by: Bashar Jehad Younis */
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 2.2rem;
+            }
+            .buttons-container {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                padding: 1.5rem 0.8rem;
+                justify-content: center;
+                align-items: center;
+            }
+            
+            .cyber-button {
+                padding: 0.8rem 1rem !important;
+                min-height: 90px !important;
+                margin: 0 !important;
+                font-size: 1.05rem;
+                flex-direction: column;
+                justify-content: center;
+                text-align: center;
+                width: 100%;
+                max-width: 260px;
+                box-sizing: border-box;
+            }
+            
+            .cyber-button i {
+                font-size: 1.8em;
+                min-width: 30px;
+            }
+            
+            .dropdown-container {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .study-materials-btn {
+                width: 100%;
+                max-width: 260px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .dropdown-menu {
+                position: relative;
+                width: 100%;
+                max-width: 260px;
+                margin-top: 0.5rem;
+                border-radius: 0 0 15px 15px;
+                transform: none;
+                opacity: 1;
+                display: none;
+                left: 0;
+                top: 0;
+            }
+            
+            .dropdown-container.active .dropdown-menu {
+                display: flex;
+            }
+            
+            .book-menu {
+                width: 90%;
+                max-height: 80vh;
+            }
+            
+            .books-grid {
+                grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+            }
+            
+            footer {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+                padding: 1.5rem 1rem;
+                background: #000 !important;
+                width: 100%;
+                position: relative;
+                bottom: 0;
+            }
+            
+            .developer-credit {
+                margin-right: 0;
+                margin-bottom: 0.5rem;
+                text-align: center;
+            }
+            
+            .social-buttons {
+                margin-top: 1rem;
+                margin-bottom: 0.5rem;
+            }
+            
+            .copyright {
+                margin-top: 0.5rem;
+                text-align: center;
+            }
+            
+            .model-container {
+                display: none;
+            }
+            
+            .icon {
+                width: 48px;
+                height: 48px;
+            }
+            
+            /* Home button adjustment for mobile - Developed by: Bashar Jehad Younis */
+            .home-button {
+                position: absolute;
+                left: 20px;
+                top: 50%;
+                transform: translateY(-50%);
+                margin-bottom: 0;
+                font-size: 1.5rem;
+            }
+            
+            .book-actions-container {
+                grid-template-columns: repeat(3, 1fr);
+                grid-template-rows: repeat(2, 1fr);
+                gap: 8px;
+            }
+            
+            .videos-container {
+                grid-template-columns: 1fr;
+            }
+
+            .book-item[data-book-id="uc-book3"] .book-title {
+                font-size: 0.7rem !important;
+                line-height: 1.2;
+                word-break: break-word;
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-title {
+                font-size: 1.8rem;
+            }
+            .buttons-container {
+                gap: 1.2rem;
+                padding: 1rem 0.5rem;
+            }
+            
+            .cyber-button {
+                padding: 0.7rem 0.9rem !important;
+                min-height: 80px !important;
+                font-size: 1rem;
+                max-width: 100%;
+            }
+            
+            .cyber-button i {
+                font-size: 1.8em;
+            }
+            
+            .dropdown-menu {
+                min-width: 100%;
+            }
+            
+            .dropdown-button {
+                padding: 0.6rem;
+                font-size: 0.85rem;
+            }
+            
+            .book-menu {
+                padding: 1rem;
+            }
+            
+            .books-grid {
+                grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+                gap: 0.8rem;
+            }
+            
+            .book-icon {
+                font-size: 2rem;
+            }
+            
+            body {
+                min-height: 100vh;
+                display: flex;
+                flex-direction: column;
+            }
+            
+            #academic-page {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+            }
+            
+            .buttons-container {
+                flex: 1;
+            }
+            
+            footer {
+                margin-top: auto;
+            }
+            
+            .book-actions-container {
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(3, 1fr);
+            }
+            
+            /* Book card adjustments for mobile - Developed by: Bashar Jehad Younis */
+            .book-card {
+                padding: 1rem;
+                width: 95%;
+            }
+            
+            .book-card-title {
+                font-size: 1.2rem;
+            }
+            
+            .book-actions-container {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 8px;
+            }
+            
+            .book-action-btn {
+                padding: 10px 5px;
+            }
+            
+            .book-action-btn i {
+                font-size: 1.2rem;
+                margin-bottom: 5px;
+            }
+            
+            .book-action-btn span {
+                font-size: 0.65rem;
+            }
+            
+            .book-action-btn:nth-child(4) {
+                grid-column: 1;
+            }
+            
+            .book-action-btn:nth-child(5) {
+                grid-column: 2;
+            }
+        }
+        
+        .study-materials-btn.active {
+            background: rgba(0, 243, 255, 0.2);
+            box-shadow: 0 0 25px var(--accent-color);
+            border-color: var(--accent-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="stars-background"></div>
+
+    <div id="academic-page">
+        <header class="main-header">
+            <a href="index.html" class="home-button">
+                <i class="fas fa-home"></i>
+            </a>
+            
+            <div class="title-container">
+                <h1 class="main-title">Cybersecurity</h1>
+            </div>
+        </header>
+
+        <div class="buttons-container">
+            <div class="dropdown-container">
+                <div class="cyber-button study-materials-btn">
+                    <i class="fas fa-book"></i>
+                    <span>Study Materials</span>
+                </div>
+                <div class="dropdown-menu">
+                    <div class="dropdown-button" id="supplementary-btn">
+                        <span>Supplementary - استدراكي</span>
+                    </div>
+                    <div class="dropdown-button" id="univ-compulsory-btn">
+                        <span>University Compulsory Req - إجباري جامعة</span>
+                    </div>
+                    <div class="dropdown-button" id="univ-elective-btn">
+                        <span>University Elective Req - حرة</span>
+                    </div>
+                    <div class="dropdown-button" id="faculty-compulsory-btn">
+                        <span>Faculty Compulsory Req - إجباري كلية</span>
+                    </div>
+                    <div class="dropdown-button" id="dept-compulsory-btn">
+                        <span>Department Compulsory Req - إجباري قسم</span>
+                    </div>
+                    <div class="dropdown-button" id="dept-elective-btn">
+                        <span>Department Elective Req - اختياري قسم</span>
+                    </div>
+                </div>
+            </div>
+
+            <a href="https://drive.google.com/drive/folders/1TAmonifuUi9Opmk6w1Zy5PlgL2_8j7Y1?usp=drive_link" class="cyber-button" target="_blank" rel="noopener">
+                <i class="fas fa-project-diagram"></i>
+                <span>Tree Plan</span>
+            </a>
+
+            <a href="https://t.me/+5_n2KS1iZ5kzODQ0" class="cyber-button" target="_blank" rel="noopener">
+                <i class="fab fa-telegram"></i>
+                <span>Courses</span>
+            </a>
+
+            <a href="https://chat.whatsapp.com/IsW3RbKziyx0x5Uq9oSkwa" class="cyber-button" target="_blank" rel="noopener">
+                <i class="fab fa-whatsapp"></i>
+                <span>Community</span>
+            </a>
+
+            <div class="model-container">
+                <div class="cyber-lock">
+                    <div class="hacked-effect"></div>
+                    <div class="lock-body">
+                        <div class="cys-text" onclick="showCyberMessage()">CYS</div>
+                    </div>
+                    <div class="hex-container">
+                        <div class="hex-element" style="transform: translate(-50%, -50%) rotate(0deg) translateX(120px) rotate(0deg);">42</div>
+                        <div class="hex-element" style="transform: translate(-50%, -50%) rotate(19deg) translateX(120px) rotate(-19deg);">61</div>
+                        <div class="hex-element" style="transform: translate(-50%, -50%) rotate(38deg) translateX(120px) rotate(-38deg);">73</div>
+                        <div class="hex-element" style="transform: translate(-50%, -50%) rotate(57deg) translateX(120px) rotate(-57deg);">68</div>
+                        <div class="hex-element" style="transform: translate(-50%, -50%) rotate(76deg) translateX(120px) rotate(-76deg);">61</div>
+                        <div class="hex-element" style="transform: translate(-50%, -50%) rotate(95deg) translateX(120px) rotate(-95deg);">72</div>
+                        <div class="hex-element" style="transform: translate(-50%, -50%) rotate(114deg) translateX(120px) rotate(-114deg);">20</div>
+                        <div class="hex-element" style="transform: translate(-50%, -50%) rotate(133deg) translateX(120px) rotate(-133deg);">4A</div>
+                        <div class="hex-element" style="transform: translate(-50%, -50%) rotate(152deg) translateX(120px) rotate(-152deg);">65</div>
+                        <div class="hex-element" style="transform: translate(-50%, -50%) rotate(171deg) translateX(120px) rotate(-171deg);">68</div>
+                        <div class="hex-element" style="transform: translate(-50%, -50%) rotate(190deg) translateX(120px) rotate(-190deg);">61</div>
+                        <div class="hex-element" style="transform: translate(-50%, -50%) rotate(209deg) translateX(120px) rotate(-209deg);">64</div>
+                        <div class="hex-element" style="transform: translate(-50%, -50%) rotate(228deg) translateX(120px) rotate(-228deg);">20</div>
+                        <div class="hex-element" style="transform: translate(-50%, -50%) rotate(247deg) translateX(120px) rotate(-247deg);">59</div>
+                        <div class="hex-element" style="transform: translate(-50%, -50%) rotate(266deg) translateX(120px) rotate(-266deg);">6F</div>
+                        <div class="hex-element" style="transform: translate(-50%, -50%) rotate(285deg) translateX(120px) rotate(-285deg);">75</div>
+                        <div class="hex-element" style="transform: translate(-50%, -50%) rotate(304deg) translateX(120px) rotate(-304deg);">6E</div>
+                        <div class="hex-element" style="transform: translate(-50%, -50%) rotate(323deg) translateX(120px) rotate(-323deg);">69</div>
+                        <div class="hex-element" style="transform: translate(-50%, -50%) rotate(342deg) translateX(120px) rotate(-342deg);">73</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Book menus - Developed by: Bashar Jehad Younis -->
+        <div class="book-menu" id="supplementary-menu">
+            <div class="book-menu-header">
+                <h2 class="book-menu-title">Supplementary Books</h2>
+                <button class="close-book-menu">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="books-grid">
+                <!-- 2 Supplementary Books - Developed by: Bashar Jehad Younis -->
+                <div class="book-item" data-book-id="sup-book1">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Computer 99</span>
+                </div>
+                <div class="book-item" data-book-id="sup-book2">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">English 99</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="book-menu" id="univ-compulsory-menu">
+            <div class="book-menu-header">
+                <h2 class="book-menu-title">University Compulsory Books</h2>
+                <button class="close-book-menu">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="books-grid">
+                <!-- 6 University Compulsory Books - Developed by: Bashar Jehad Younis -->
+                <div class="book-item" data-book-id="uc-book1">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Arabic</span>
+                </div>
+                <div class="book-item" data-book-id="uc-book2">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Leadership</span>
+                </div>
+                <div class="book-item" data-book-id="uc-book3">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Entrepreneurship</span>
+                </div>
+                <div class="book-item" data-book-id="uc-book4">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Military Sciences</span>
+                </div>
+                <div class="book-item" data-book-id="uc-book5">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">English 101</span>
+                </div>
+                <div class="book-item" data-book-id="uc-book6">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Life Skills</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="book-menu" id="univ-elective-menu">
+            <div class="book-menu-header">
+                <h2 class="book-menu-title">University Elective Books</h2>
+                <button class="close-book-menu">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="books-grid">
+                <!-- 49 University Elective Books - Developed by: Bashar Jehad Younis -->
+                <div class="book-item" data-book-id="ue-book1">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Appreciation</span>
+                </div>
+                <div class="book-item" data-book-id="ue-book2">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Health Promotion</span>
+                </div>
+                <div class="book-item" data-book-id="ue-book3">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Disability</span>
+                </div>
+                <div class="book-item" data-book-id="ue-book4">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Wellness</span>
+                </div>
+                <div class="book-item" data-book-id="ue-book5">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Dental Health</span>
+                </div>
+                <div class="book-item" data-book-id="ue-book6">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Ai Applications</span>
+                </div>
+                <div class="book-item" data-book-id="ue-book7">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Renewable Energy</span>
+                </div>
+                <div class="book-item" data-book-id="ue-book8">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Palestinian Issue</span>
+                </div>
+                <div class="book-item" data-book-id="ue-book9">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Ourism in Jordan</span>
+                </div>
+                <div class="book-item" data-book-id="ue-book10">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Community Health</span>
+                </div>
+                <div class="book-item" data-book-id="ue-book11">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Road Safety</span>
+                </div>
+                <div class="book-item" data-book-id="ue-book12">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Family Health</span>
+                </div>
+                <div class="book-item" data-book-id="ue-book13">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Islam and Recent Problems</span>
+                </div>
+                <div class="book-item" data-book-id="ue-book14">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Economic System in Islam</span>
+                </div>
+                <div class="book-item" data-book-id="ue-book15">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Sociology</span>
+                </div>
+                <div class="book-item" data-book-id="ue-book16">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Psychology</span>
+                </div>
+                <div class="book-item" data-book-id="ue-book17">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Educational Technology</span>
+                </div>
+                <div class="book-item" data-book-id="ue-book18">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Digital Skills</span>
+                </div>
+                <div class="book-item" data-book-id="ue-book19">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Islamic Civilization</span>
+                </div>
+                <div class="book-item" data-book-id="ue-book20">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">History of Jerusalem</span>
+                </div>
+                <div class="book-item" data-book-id="ue-book21">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Recent Cultures</span>
+                </div>
+                <div class="book-item" data-book-id="ue-book22">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Islamic Culture</span>
+                </div>
+                <div class="book-item" data-book-id="ue-book23">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Law in Our Life</span>
+                </div>
+                <div class="book-item" data-book-id="ue-book24">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Human Rights</span>
+                </div>
+                <div class="book-item" data-book-id="ue-book25">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Contemporary Challenges</span>
+                </div>
+                <div class="book-item" data-book-id="ue-book26">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Contemporary Problems</span>
+                </div>
+                <div class="book-item" data-book-id="ue-book27">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Food Preservation</span>
+                </div>
+                <div class="book-item" data-book-id="ue-book28">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Nanotechnology</span>
+                </div>
+                <div class="book-item" data-book-id="ue-book29">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Farm Animal Products</span>
+                </div>
+                <div class="book-item" data-book-id="ue-book30">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Home Gardens</span>
+                </div>
+                <div class="book-item" data-book-id="ue-book31">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Natural Resources</span>
+                </div>
+                <div class="book-item" data-book-id="ue-book32">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Nuclear Energy</span>
+                </div>
+                <div class="book-item" data-book-id="ue-book33">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Beekeeping</span>
+                </div>
+                <div class="book-item" data-book-id="ue-book34">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Natural Plants of Jordan</span>
+                </div>
+                <div class="book-item" data-book-id="ue-book35">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Plant Earth</span>
+                </div>
+                <div class="book-item" data-book-id="ue-book36">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Sociology</span>
+                </div>
+                <div class="book-item" data-book-id="ue-book37">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Animal Health</span>
+                </div>
+                <div class="book-item" data-book-id="ue-book38">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Pet Animal Care</span>
+                </div>
+                <div class="book-item" data-book-id="ue-book39">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Individual and Society</span>
+                </div>
+                <div class="book-item" data-book-id="ue-book40">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Animal Behaviour</span>
+                </div>
+                <div class="book-item" data-book-id="ue-book41">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Animal Products</span>
+                </div>
+                <div class="book-item" data-book-id="ue-book42">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Global Issues</span>
+                </div>
+                <div class="book-item" data-book-id="ue-book43">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">History of Sciences in Islam</span>
+                </div>
+                <div class="book-item" data-book-id="ue-book44">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Music Tasting</span>
+                </div>
+                <div class="book-item" data-book-id="ue-book45">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Environment</span>
+                </div>
+                <div class="book-item" data-book-id="ue-book46">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">French Language</span>
+                </div>
+                <div class="book-item" data-book-id="ue-book47">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">German Language</span>
+                </div>
+                <div class="book-item" data-book-id="ue-book48">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Spanish Language</span>
+                </div>
+                <div class="book-item" data-book-id="ue-book49">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Turkish Language</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="book-menu" id="faculty-compulsory-menu">
+            <div class="book-menu-header">
+                <h2 class="book-menu-title">Faculty Compulsory Books</h2>
+                <button class="close-book-menu">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="books-grid">
+                <!-- 10 Faculty Compulsory Books - Developed by: Bashar Jehad Younis -->
+                <div class="book-item" data-book-id="fc-book1">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Calculus 1</span>
+                </div>
+                <div class="book-item" data-book-id="fc-book2">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Calculus 2</span>
+                </div>
+                <div class="book-item" data-book-id="fc-book3">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Intro</span>
+                </div>
+                <div class="book-item" data-book-id="fc-book4">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">C++</span>
+                </div>
+                <div class="book-item" data-book-id="fc-book5">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">C++ (Lab)</span>
+                </div>
+                <div class="book-item" data-book-id="fc-book6">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">OOP</span>
+                </div>
+                <div class="book-item" data-book-id="fc-book7">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">OOP (Lab)</span>
+                </div>
+                <div class="book-item" data-book-id="fc-book8">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Data Structures</span>
+                </div>
+                <div class="book-item" data-book-id="fc-book9">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Database</span>
+                </div>
+                <div class="book-item" data-book-id="fc-book10">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Discrete</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="book-menu" id="dept-compulsory-menu">
+            <div class="book-menu-header">
+                <h2 class="book-menu-title">Department Compulsory Books</h2>
+                <button class="close-book-menu">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="books-grid">
+                <!-- 32 Department Compulsory Books - Developed by: Bashar Jehad Younis -->
+                <div class="book-item" data-book-id="dc-book1">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Physics (2)</span>
+                </div>
+                <div class="book-item" data-book-id="dc-book2">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Prob</span>
+                </div>
+                <div class="book-item" data-book-id="dc-book3">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Linear</span>
+                </div>
+                <div class="book-item" data-book-id="dc-book4">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Algo</span>
+                </div>
+                <div class="book-item" data-book-id="dc-book5">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">CIS Ethics</span>
+                </div>
+                <div class="book-item" data-book-id="dc-book6">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Systems</span>
+                </div>
+                <div class="book-item" data-book-id="dc-book7">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">CYS Fundamentals</span>
+                </div>
+                <div class="book-item" data-book-id="dc-book8">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Assembly</span>
+                </div>
+                <div class="book-item" data-book-id="dc-book9">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Python</span>
+                </div>
+                <div class="book-item" data-book-id="dc-book10">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Crypto</span>
+                </div>
+                <div class="book-item" data-book-id="dc-book11">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Database Sec</span>
+                </div>
+                <div class="book-item" data-book-id="dc-book12">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Database Sec Lab</span>
+                </div>
+                <div class="book-item" data-book-id="dc-book13">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Networks</span>
+                </div>
+                <div class="book-item" data-book-id="dc-book14">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Networks Lab</span>
+                </div>
+                <div class="book-item" data-book-id="dc-book15">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Networks Sec & Def</span>
+                </div>
+                <div class="book-item" data-book-id="dc-book16">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Networks Sec & Def Lab</span>
+                </div>
+                <div class="book-item" data-book-id="dc-book17">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Reverse</span>
+                </div>
+                <div class="book-item" data-book-id="dc-book18">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Linux</span>
+                </div>
+                <div class="book-item" data-book-id="dc-book19">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">OS Sec</span>
+                </div>
+                <div class="book-item" data-book-id="dc-book20">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Risk</span>
+                </div>
+                <div class="book-item" data-book-id="dc-book21">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">CYS Ethics</span>
+                </div>
+                <div class="book-item" data-book-id="dc-book22">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Software Sec</span>
+                </div>
+                <div class="book-item" data-book-id="dc-book23">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Web</span>
+                </div>
+                <div class="book-item" data-book-id="dc-book24">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Web Lab</span>
+                </div>
+                <div class="book-item" data-book-id="dc-book25">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Security Analytics</span>
+                </div>
+                <div class="book-item" data-book-id="dc-book26">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Ethical Hacking</span>
+                </div>
+                <div class="book-item" data-book-id="dc-book27">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Ethical Hacking Lab</span>
+                </div>
+                <div class="book-item" data-book-id="dc-book28">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Forensics</span>
+                </div>
+                <div class="book-item" data-book-id="dc-book29">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Forensics Lab</span>
+                </div>
+                <div class="book-item" data-book-id="dc-book30">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Project (1)</span>
+                </div>
+                <div class="book-item" data-book-id="dc-book31">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Project (2)</span>
+                </div>
+                <div class="book-item" data-book-id="dc-book32">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Field Training</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="book-menu" id="dept-elective-menu">
+            <div class="book-menu-header">
+                <h2 class="book-menu-title">Department Elective Books</h2>
+                <button class="close-book-menu">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="books-grid">
+                <!-- 12 Department Elective Books - Developed by: Bashar Jehad Younis -->
+                <div class="book-item" data-book-id="de-book1">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Mobile App</span>
+                </div>
+                <div class="book-item" data-book-id="de-book2">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Cloud Sec</span>
+                </div>
+                <div class="book-item" data-book-id="de-book3">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">IoT Sec</span>
+                </div>
+                <div class="book-item" data-book-id="de-book4">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Healthcare</span>
+                </div>
+                <div class="book-item" data-book-id="de-book5">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Deep Learning</span>
+                </div>
+                <div class="book-item" data-book-id="de-book6">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Stegano</span>
+                </div>
+                <div class="book-item" data-book-id="de-book7">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Advanced Crypto</span>
+                </div>
+                <div class="book-item" data-book-id="de-book8">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Hardware Sec</span>
+                </div>
+                <div class="book-item" data-book-id="de-book9">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Formal</span>
+                </div>
+                <div class="book-item" data-book-id="de-book10">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Mobile Sec</span>
+                </div>
+                <div class="book-item" data-book-id="de-book11">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Special Topics (1)</span>
+                </div>
+                <div class="book-item" data-book-id="de-book12">
+                    <i class="fas fa-book book-icon"></i>
+                    <span class="book-title">Special Topics (2)</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Book card - Developed by: Bashar Jehad Younis -->
+        <div class="book-card" id="book-card">
+            <div class="book-card-header">
+                <h2 class="book-card-title"><i class="fas fa-book"></i> <span id="book-card-title">Book Details</span></h2>
+                <button class="close-book-menu" onclick="closeBookCard()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="book-actions-container">
+                <a id="book-link" href="#" target="_blank" class="book-action-btn">
+                    <i class="fas fa-book"></i>
+                    <span>Book</span>
+                </a>
+                <a id="slides-link" href="#" target="_blank" class="book-action-btn">
+                    <i class="fas fa-file-powerpoint"></i>
+                    <span>Slides</span>
+                </a>
+                <a id="questions-link" href="#" target="_blank" class="book-action-btn">
+                    <i class="fas fa-question-circle"></i>
+                    <span>Questions</span>
+                </a>
+                <a id="files-link" href="#" target="_blank" class="book-action-btn">
+                    <i class="fas fa-file"></i>
+                    <span>Files</span>
+                </a>
+                <a id="group-link" href="#" target="_blank" class="book-action-btn">
+                    <i class="fas fa-users"></i>
+                    <span>Group</span>
+                </a>
+            </div>
+            
+            <div class="section-divider"></div>
+            
+            <div class="videos-container">
+                <div class="video-item">
+                    <div class="video-thumbnail" style="background: var(--video-thumb-1);">
+                        <i class="fab fa-youtube"></i>
+                    </div>
+                    <div class="video-title" id="video-title-1">Video 1</div>
+                </div>
+                <div class="video-item">
+                    <div class="video-thumbnail" style="background: var(--video-thumb-2);">
+                        <i class="fab fa-youtube"></i>
+                    </div>
+                    <div class="video-title" id="video-title-2">Video 2</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="cyber-modal" class="cyber-modal">
+            <div class="cyber-modal-content">
+                <span class="close-modal">&times;</span>
+                <h3>
+                    <i class="fas fa-shield-alt"></i>
+                    About Cybersecurity Specialty
+                </h3>
+                <p>
+                 <strong>Cybersecurity (CYS)</strong> is a rapidly growing field that focuses on protecting computer systems, networks, and data from digital threats and cyberattacks.
+                 As technology becomes more integrated into every aspect of life, the demand for skilled cybersecurity professionals continues to rise.
+                 At <strong>Jordan University of Science and Technology (JUST)</strong>, the Bachelor’s program in Cybersecurity is designed to equip students with both theoretical knowledge and hands-on experience
+                 through advanced laboratories, real-world simulations, and industry-aligned curricula.
+                 The program is delivered in English and consists of <strong>132 credit hours</strong>, covering key areas such as ethical hacking, network security, digital forensics, and information security management.
+                 Graduates will be well-prepared to pursue careers in government, private sector, or continue with advanced studies in the field.
+                </p>
+            </div>
+        </div>
+
+        <!-- Book messages modals - Developed by: Bashar Jehad Younis -->
+        <div id="book-message-modal" class="cyber-modal">
+            <div class="cyber-modal-content">
+                <span class="close-modal">&times;</span>
+                <h3 id="book-message-title">
+                    <i class="fas fa-lock"></i>
+                    <span>Special Book Information</span>
+                </h3>
+                <ul id="book-message-content">
+                </ul>
+            </div>
+        </div>
+
+        <!-- Footer - Developed by: Bashar Jehad Younis -->
+        <footer>
+            <p class="copyright">&copy; 2025 Cybersecurity Department - All Rights Reserved</p>
+        </footer>
+    </div>
+
+    <script>
+        // Book data with unique Google Drive links and videos for each book - Developed by: Bashar Jehad Younis
+        const booksData = {
+            // Supplementary books (2) - Developed by: Bashar Jehad Younis
+            "sup-book1": {
+                title: "Computer Skills (Remedial Course)",
+                bookLink: "https://drive.google.com/drive/folders/1OBNYD666dsQMTqzUhH54wSRYR6q86WJS?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/17REzZAIEWhdRLuhx2iupTpgiFInZw791?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1bkRibfqEtd1VoCJmOrz2ZvAh894bSELb?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1yOfOwuJgFaWQxE16kEvE8Pj8kmpCN2Dv?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/JuCsj1FZ73C1vkPWyaYKzm?mode=ac_t",
+                videos: [
+                    { title: "Soon", link: "" },
+                    { title: "Soon", link: "" }
+                ]
+            },
+            "sup-book2": {
+                title: "English Language (Remedial Course)",
+                bookLink: "https://drive.google.com/drive/folders/1Y5rVEVyeM4KolJNCW1EDIy-ycF2ntZOC?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1TZlHkjIF7wFaGzmljj3-funrUUYOlvgJ?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1dJCCA0MlcBZtXIuoLoaxSeexA1-Nw3Cs?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1LC-jxwt-1t0fsChgBqbBZ4sI2B7_m_9a?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/JuCsj1FZ73C1vkPWyaYKzm?mode=ac_t",
+                videos: [
+                    { title: "Soon", link: "" },
+                    { title: "Soon", link: "" }
+                ]
+            },
+            
+            // University Compulsory books (6) - Developed by: Bashar Jehad Younis
+            "uc-book1": {
+                title: "Communication Skills in Arabic",
+                bookLink: "https://drive.google.com/drive/folders/183uHHb_vKNu1bs-hfNKQe2Hgk4vzr7Ga?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1Bn7merNJiDqXj4sOvjSnCQzSVfg1JEUR?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/15sC6yOWmgTTJm18ZE_hPoauf6k7GcjEO?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1sTyq7ZipuBF8zawvkrZZoo18azyFxDbz?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/JuCsj1FZ73C1vkPWyaYKzm?mode=ac_t",
+                videos: [
+                    { title: "Soon", link: "" },
+                    { title: "Soon", link: "" }
+                ]
+            },
+            "uc-book2": {
+                title: "Leader and Social Responsibility",
+                bookLink: "https://drive.google.com/drive/folders/1ln4ZeC2umvHuTN-NVaaiisl7eNPs44NW?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/19iM6yTyAREa_Z8Cr2k_DPQDt2DIHD3c3?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1iwPXObhdS7YLcI5ckfcJSRP7XBZyKhke?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1hSTklYxKC1cxBmn3r6GDsJ5ky8le3sUp?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/JuCsj1FZ73C1vkPWyaYKzm?mode=ac_t",
+                videos: [
+                    { title: "Soon", link: "" },
+                    { title: "Soon", link: "" }
+                ]
+            },
+            "uc-book3": {
+                title: "Entrepreneurship and Innovation",
+                bookLink: "https://drive.google.com/drive/folders/1cdLnwA8O-B4mMrCnAHWif-DE6pwVwNGQ?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/16JhGLz7PVpg7TJkhR_3nss7vYSDh22NO?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1MOlDqGNxi6Xy_mjB_KdjzZhDmO9fU_WF?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1g7I_9R3Uo9sP68bKI4uhg30KsIopDsXB?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/JuCsj1FZ73C1vkPWyaYKzm?mode=ac_t",
+                videos: [
+                    { title: "Soon", link: "" },
+                    { title: "Soon", link: "" }
+                ]
+            },
+            "uc-book4": {
+                title: "Military Sciences",
+                bookLink: "https://drive.google.com/drive/folders/1Gvmu2fZrlFkvmhn846GPRKEaRe8L6Sl3?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1DrSpwsMyOnCTUY0-b8cDF_GIDny3Jdik?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1etghS6L3iY13vS6aoUTrGwg0Q4Xwm5WV?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1UsqH6NVM6zJAdVxxc0fAub1jhZVPGBev?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/JuCsj1FZ73C1vkPWyaYKzm?mode=ac_t",
+                videos: [
+                    { title: "Soon", link: "" },
+                    { title: "Soon", link: "" }
+                ]
+            },
+            "uc-book5": {
+                title: "Communication Skills in English",
+                bookLink: "https://drive.google.com/drive/folders/1IW6T4al8OJ6zI7XgHdA-SM52CdGLs-nY?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1YczOGkV7BUI-PlIU8G_6ep2LmtJoEO3B?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1_2_MESC6BmGEHWSlPRm6gVBpObZ9Hnly?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1sAA_NhiWbXZIpZMVU5OEBwpqlMCbTGpK?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/JuCsj1FZ73C1vkPWyaYKzm?mode=ac_t",
+                videos: [
+                    { title: "Soon", link: "" },
+                    { title: "Soon", link: "" }
+                ]
+            },
+            "uc-book6": {
+                title: "Life Skills",
+                bookLink: "https://drive.google.com/drive/folders/1tsuGXRNvd-Zf7Zap3-wSUxz3dqJ6Y51g?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/13UIQcm3Ct3byrdNtqpzT_vl2ZJE5DWiQ?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/13PZ9t_CdmMydb19TK0GW_qFu7_p9-Q5w?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1SVIxEzTPiXlZb8w4zfquCfYYcOrtiHql?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/JuCsj1FZ73C1vkPWyaYKzm?mode=ac_t",
+                videos: [
+                    { title: "Soon", link: "" },
+                    { title: "Soon", link: "" }
+                ]
+            },
+            
+            // University Elective books (49) - Developed by: Bashar Jehad Younis
+            "ue-book1": {
+                title: "Appreciation of Literary Texts",
+                bookLink: "https://drive.google.com/drive/folders/1rADzw5v9qaMTfHQWq9ModAfGC32R4SHi?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1aOR8xzzO0VU_KeoZ_FpgtsARuiablLVb?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1pj-yarGUVjSHxKuh_mKNs8crvbVB-rI6?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1l2wWz7eB-eZQTrv2IB1OSEYhWMhIgEji?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/JuCsj1FZ73C1vkPWyaYKzm?mode=ac_t",
+                videos: [
+                    { title: "Soon", link: "" },
+                    { title: "Soon", link: "" }
+                ]
+            },
+            "ue-book2": {
+                title: "Health Promotion",
+                bookLink: "https://drive.google.com/drive/folders/136VZ6ccuab1hokQ7I4CptdEuiN4su3cG?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/11oAuM5w9KJIOcdOyyY4cq3maYAKyKFW9?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1D6HnJAQMtsnjQeAjme1aovg1BWIKs1fA?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1aMNKVodQiw6pzZqzLABWj14NLl3xxh9l?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/JuCsj1FZ73C1vkPWyaYKzm?mode=ac_t",
+                videos: [
+                    { title: "Soon", link: "" },
+                    { title: "Soon", link: "" }
+                ]
+            },
+            "ue-book3": {
+                title: "Disability and The Society",
+                bookLink: "https://drive.google.com/drive/folders/1yyrb-fdKLfrkw5NcTX0FcU9FA7j6XmuC?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1RE2jGUs-onyTLLqczuisFXOxC6Dzla6X?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1pJzdiliGZBR-shQdHchKxKpgS1-NdlHj?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1tZBa13KmugWbHVAStOREX2JsrSDV2KlH?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/JuCsj1FZ73C1vkPWyaYKzm?mode=ac_t",
+                videos: [
+                    { title: "Soon", link: "" },
+                    { title: "Soon", link: "" }
+                ]
+            },
+            "ue-book4": {
+                title: "Wellness and Life Styles",
+                bookLink: "https://drive.google.com/drive/folders/1M9oX_ObAjJeSjTc2XnylLItQ5LMYU7Ow?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1TltpzAnAL2RhO98n9p2uXssIzTEIXuPu?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1fjCA4eyomdzbseKemaGh9vxVfr1cmx_y?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1TyHb_ZohyfOhoATFcZwfqx1KppJLbVuz?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/JuCsj1FZ73C1vkPWyaYKzm?mode=ac_t",
+                videos: [
+                    { title: "Soon", link: "" },
+                    { title: "Soon", link: "" }
+                ]
+            },
+            "ue-book5": {
+                title: "Oral & Dental Health",
+                bookLink: "https://drive.google.com/drive/folders/1d6qsevZEysGjv32ITMS053RWasKMJFto?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1jb-zmf8W3JCRJxlgjwBfFoERooNDhc6B?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1PzuK9JgW-6QDmzEr_C8w2N1_xTTTdBw_?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1NoPae6XwUD6IQ9mEy0H-PmHuyJCTdaxh?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/JuCsj1FZ73C1vkPWyaYKzm?mode=ac_t",
+                videos: [
+                    { title: "Soon", link: "" },
+                    { title: "Soon", link: "" }
+                ]
+            },
+            "ue-book6": {
+                title: "Ai Applications",
+                bookLink: "https://drive.google.com/drive/folders/14FVJLNAu2FxoZcwZqNjet6KM67Fw6O1I?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1QIQmp_BhD4WmpGcTrfu-vkrTEF1biTt4?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1WpaYwrZvdLtmzKsOR3TaYr_7jmtsijfx?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1NcYFC7iIl85CYABS8iKvBGhQd7BkcQU4?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/JuCsj1FZ73C1vkPWyaYKzm?mode=ac_t",
+                videos: [
+                    { title: "Soon", link: "" },
+                    { title: "Soon", link: "" }
+                ]
+            },
+            "ue-book7": {
+                title: "Introduction to Renewable Energy",
+                bookLink: "https://drive.google.com/drive/folders/1AL4Cvikt1CbT-GkgoDk-fa9YI0g799T5?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1L3ajdMRgWiLhTdQVLP9xrbQdAQ2nr-ca?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/10zn_rQkwzAtL-LTvZ-iNg_wJ4NCElm5Y?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1_ULCvmraZdhjdAJhSO2gHaHjJburuqpU?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/JuCsj1FZ73C1vkPWyaYKzm?mode=ac_t",
+                videos: [
+                    { title: "Soon", link: "" },
+                    { title: "Soon", link: "" }
+                ]
+            },
+            "ue-book8": {
+                title: "The Palestinian Issue",
+                bookLink: "https://drive.google.com/drive/folders/1M_pbcLNGoGGByexEAk9DbtXjcyxqUJkw?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1S4WCq89B1oBH86FYM3mY1xaUZF6OoKgo?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1SNkmcLjkGxvJPl3Lr3DYiL-8NGz3EcSh?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1nq-vHCP5p_qg2I8nL8KA7TvDeNPHO2J_?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/JuCsj1FZ73C1vkPWyaYKzm?mode=ac_t",
+                videos: [
+                    { title: "Soon", link: "" },
+                    { title: "Soon", link: "" }
+                ]
+            },
+            "ue-book9": {
+                title: "Ourism and Museums in Jordan",
+                bookLink: "https://drive.google.com/drive/folders/1UO7EZF1WTSaMLB8YXkK3o0mgJGvtBpLQ?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1udB0TOBLjbd6_zs3FysDcdRJzfy2YpE_?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1gioSe6eDgHl17hwRw-XkbwsTFfyqcsCy?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1Xs6Cbt41jGCJbr8MX3whF1IChB5FZJEZ?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/JuCsj1FZ73C1vkPWyaYKzm?mode=ac_t",
+                videos: [
+                    { title: "Soon", link: "" },
+                    { title: "Soon", link: "" }
+                ]
+            },
+            "ue-book10": {
+                title: "Community Health and Nutrition",
+                bookLink: "https://drive.google.com/drive/folders/11re993WAkepLVSeo-8t0KF4vqs6xNdaz?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1itk8Lvv9hK_GPwcua9WuYo4mWoa6boKy?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1vQfEtQ3H4Yrg4jwHfhuBaoCATKfnx3eV?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1_SCHQOFsSIA20dbG9RM733NkmB0JYXc8?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/JuCsj1FZ73C1vkPWyaYKzm?mode=ac_t",
+                videos: [
+                    { title: "Soon", link: "" },
+                    { title: "Soon", link: "" }
+                ]
+            },
+            "ue-book11": {
+                title: "Road Safety",
+                bookLink: "https://drive.google.com/drive/folders/1HEhs6khZkQ7oBm0k8a5lElbXwpErll1F?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/12ECzSGPUuj5IDYXWgavNFak5R3JAxBLE?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/123v5rPVuUZhVx4JwKjnjEhJuR2blZ0En?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1lYFEZzuhXIft3zozlT-eH33UZhJ7dQ4U?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/JuCsj1FZ73C1vkPWyaYKzm?mode=ac_t",
+                videos: [
+                    { title: "Soon", link: "" },
+                    { title: "Soon", link: "" }
+                ]
+            },
+            "ue-book12": {
+                title: "Family Health",
+                bookLink: "https://drive.google.com/drive/folders/1243pp4tmpP4-HHKxgdCc_QbZQUHg1aS7?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1_o8AcitHruDqZFmEhhpGIWPnUi4kUOTr?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1GRSYWHWF2CkAnakKyx8I_sELit_TtK_L?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1-kygqyu1oxT_BziEtxtQE0yl6G3mw4b_?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/JuCsj1FZ73C1vkPWyaYKzm?mode=ac_t",
+                videos: [
+                    { title: "Soon", link: "" },
+                    { title: "Soon", link: "" }
+                ]
+            },
+            "ue-book13": {
+                title: "Islam and Recent Problems",
+                bookLink: "https://drive.google.com/drive/folders/10fsnLdksl-a66vsc3IEeNKXO-NGJaqzS?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1lAipZKQuvKxSCbjV2Ox4r8aJkLR0scB8?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1KSqnvipbOC2zKkExEnwcJLEZX4enF61_?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/13DEeQlJF39iI3BcK2IEC4O4Ms6RMOXau?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/JuCsj1FZ73C1vkPWyaYKzm?mode=ac_t",
+                videos: [
+                    { title: "Soon", link: "" },
+                    { title: "Soon", link: "" }
+                ]
+            },
+            "ue-book14": {
+                title: "Economic System in Islam",
+                bookLink: "https://drive.google.com/drive/folders/1AxTyeKVoaCV4dV8RoleSo1U-rqd7zaBT?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1ISk1Osl33eoJzfW9zdAiR-aX-U0Pq7Sz?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/19MNna5_ew_og7LsCM9GXjQ5xzAwxAot_?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1B71zfbogk4lMRMRiKrf-BsSGwNkosaKX?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/JuCsj1FZ73C1vkPWyaYKzm?mode=ac_t",
+                videos: [
+                    { title: "Soon", link: "" },
+                    { title: "Soon", link: "" }
+                ]
+            },
+            "ue-book15": {
+                title: "Principles of Sociology",
+                bookLink: "https://drive.google.com/drive/folders/1rKPbBvt4HCiwB57SidzBXmzTNvyOHJLQ?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1-oHo6Z6uq_Gt7UtXdIeV_o7nAcOVmGyd?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1p7oEpQwQxBv0QH-SBZs1febkQB7KdTyK?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1ewfJmOFxwwupSXvkMNmJTBN-RzM2VhtD?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/JuCsj1FZ73C1vkPWyaYKzm?mode=ac_t",
+                videos: [
+                    { title: "Soon", link: "" },
+                    { title: "Soon", link: "" }
+                ]
+            },
+            "ue-book16": {
+                title: "Principles of Psychology",
+                bookLink: "https://drive.google.com/drive/folders/18PoAKlAcMZeMn3_2W1h0tYZho7VYw358?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1FNPC6XMADLQdcGy9J_4cQPGwNEXzP60N?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1ot2lknQCRq70hXeWC2QoeZovivrUphgo?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1GuczqLqaVBtmp9V7LlyfogXFW0Wtp97Y?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/JuCsj1FZ73C1vkPWyaYKzm?mode=ac_t",
+                videos: [
+                    { title: "Soon", link: "" },
+                    { title: "Soon", link: "" }
+                ]
+            },
+            "ue-book17": {
+                title: "Educational Technology",
+                bookLink: "https://drive.google.com/drive/folders/1TIvd72nSztWWoF3H23BbD-7hfha0f2En?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1R8t6cbPZ6OMYPMCYzcH5Z6xZ7iPJM5UP?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1wZBONZ7VXPoZFgLzfx4esdi_YurEFpPA?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1Pv7R5kf5Q0njA2gyGURaFtXTFyAE-juo?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/JuCsj1FZ73C1vkPWyaYKzm?mode=ac_t",
+                videos: [
+                    { title: "Soon", link: "" },
+                    { title: "Soon", link: "" }
+                ]
+            },
+            "ue-book18": {
+                title: "Digital Skills",
+                bookLink: "https://drive.google.com/drive/folders/1ieRaTxnCrTLJanHNHIGwO99-tuJKHyag?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1R7j5pxTjFOThDtd39mZmqCtf9Do-8wDJ?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1lFTUwPribCPgcAGL7OLWF_kX2bkbb1f9?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1iNA76f92bYSr4Y-rKnbhroez4Goxf-tR?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/JuCsj1FZ73C1vkPWyaYKzm?mode=ac_t",
+                videos: [
+                    { title: "Soon", link: "" },
+                    { title: "Soon", link: "" }
+                ]
+            },
+            "ue-book19": {
+                title: "Islamic Civilization",
+                bookLink: "https://drive.google.com/drive/folders/1Xwx6vCgWviscRXlOtX8TmZfDsGJU5AM_?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1wRp1Uq019FPs8_H0iyYR4OE9Kh28Uty9?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1Y5CwU-RONtiPfXzh9wJ5NOeilVLxY-XF?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1VbBtlG7-xy1DilsHMYj1pH7CtNQpcRAP?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/JuCsj1FZ73C1vkPWyaYKzm?mode=ac_t",
+                videos: [
+                    { title: "Soon", link: "" },
+                    { title: "Soon", link: "" }
+                ]
+            },
+            "ue-book20": {
+                title: "The History of The City of Jerusalem",
+                bookLink: "https://drive.google.com/drive/folders/1668da5LWM61acQa_9zwob6oa7qUe_pRC?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1QVCO0vnCqwTybip0sx-qvj1db7qIXBus?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1Vsj-C4uF9nGHGuP_bxTwbvnPFxDEYJ4K?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1Rz77VrK1aCD5qXS5mR1G99ow1r8g6WM9?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/JuCsj1FZ73C1vkPWyaYKzm?mode=ac_t",
+                videos: [
+                    { title: "Soon", link: "" },
+                    { title: "Soon", link: "" }
+                ]
+            },
+            "ue-book21": {
+                title: "Civilization and Recent Cultures",
+                bookLink: "https://drive.google.com/drive/folders/1iVBj0LITOR2DkMvBATPfHqMprfFg8cEa?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1b1VXmtgkfac4lKylg1KnezMqRl_QEVKr?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1orm_qJI3nGMR1MlUdDwojg9R6R79yk7s?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/16tT07hc7Mh7CLdca7xZagujq9eUYGuwu?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/JuCsj1FZ73C1vkPWyaYKzm?mode=ac_t",
+                videos: [
+                    { title: "Soon", link: "" },
+                    { title: "Soon", link: "" }
+                ]
+            },
+            "ue-book22": {
+                title: "Islamic Culture",
+                bookLink: "https://drive.google.com/drive/folders/1n36qGZZrDbWjhCYwNWtMP_Kz2Se-P9tl?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1iRIrU0rqA2IxUV7vg_sXG8mK_4Z1Ik3z?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1rECkt5xbGcv4WDev0cXbggeFBMDntGcA?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1vX_YNVsdRA6l088m4VNbEFIaOSCJ9Kto?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/JuCsj1FZ73C1vkPWyaYKzm?mode=ac_t",
+                videos: [
+                    { title: "Soon", link: "" },
+                    { title: "Soon", link: "" }
+                ]
+            },
+            "ue-book23": {
+                title: "The Law in Our Life",
+                bookLink: "https://drive.google.com/drive/folders/1IRiYFR5KGtdgYSqNv45KtXD0YLIlCT15?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1i90gAj4odUSH7N9BJtIfDagEvssoJjAs?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1r-hRcTiaMjps-GtXufNS-RFqDd7gl306?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1_nGiQDC6HzWPW2zGVpakUBmUMFdhi7hC?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/JuCsj1FZ73C1vkPWyaYKzm?mode=ac_t",
+                videos: [
+                    { title: "Soon", link: "" },
+                    { title: "Soon", link: "" }
+                ]
+            },
+            "ue-book24": {
+                title: "Human Rights",
+                bookLink: "https://drive.google.com/drive/folders/1AeKSyxoIYtjvQM4FKiIk1HXorSqhvlZ1?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1IMXh4QkTbbpbgrv0pg8l7gUkK_IuPyV9?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/14TdR4NSReNkDqTFqztYwwCYgZnzM16OZ?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1nzxZC1YuWwm688AXGfW-4ckndFPWNb8z?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/JuCsj1FZ73C1vkPWyaYKzm?mode=ac_t",
+                videos: [
+                    { title: "Soon", link: "" },
+                    { title: "Soon", link: "" }
+                ]
+            },
+            "ue-book25": {
+                title: "Islam and Contemporary Challenges",
+                bookLink: "https://drive.google.com/drive/folders/1HPwv8nv4_7iu5mBjYmvYgw8YBcE019eq?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1U0WldY7OIwgH1L6MGdfEKv3_8eHVSlIl?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1sLCfLHsP6JzksIBMbLYgPrOJWp2du0vV?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/14bV17u37UpjJRDRuHTqI6l9Qrp_891wq?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/JuCsj1FZ73C1vkPWyaYKzm?mode=ac_t",
+                videos: [
+                    { title: "Soon", link: "" },
+                    { title: "Soon", link: "" }
+                ]
+            },
+            "ue-book26": {
+                title: "Contemporary Problems",
+                bookLink: "https://drive.google.com/drive/folders/1SsHw1pWxVTJukWGnSjBzMpWU3Zn7q3MZ?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1DlTZpu_W3hvcyfgk4sz3lC4COG8jhAmI?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1VpIiecvF-w7aKrKOwttuNgg9ZRY1jH98?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1cLXcMA4Imft4P1aJrUKFGQqCQOGKco0R?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/JuCsj1FZ73C1vkPWyaYKzm?mode=ac_t",
+                videos: [
+                    { title: "Soon", link: "" },
+                    { title: "Soon", link: "" }
+                ]
+            },
+            "ue-book27": {
+                title: "Food Preservation",
+                bookLink: "https://drive.google.com/drive/folders/1P9-53auvbcQcNPOoKJJP6V7OSfdFzVe_?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1JGtqGOv1hN-FNcqpw-s8it9SEfo6WNYR?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1JS5wTCGdkzgQ9IUJiHDH8E7jVuDZC_B2?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1-p_dvsv1FsH9tQ3g9Tu1p5AMYin4RV3U?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/JuCsj1FZ73C1vkPWyaYKzm?mode=ac_t",
+                videos: [
+                    { title: "Soon", link: "" },
+                    { title: "Soon", link: "" }
+                ]
+            },
+            "ue-book28": {
+                title: "Introduction to The Nanotechnology",
+                bookLink: "https://drive.google.com/drive/folders/1FN-7MToGjuxvd4RTVD-WrsNJZaDTWihA?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1SfHRlogkPWFXMTaSjpjS4hwt67uQ8Haa?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1KBmnVrdV09LNCpGnx4XF5dZneLz3OeoL?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1IA7ucBxws8mcscAHGDTHacxYTMmoe8cv?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/JuCsj1FZ73C1vkPWyaYKzm?mode=ac_t",
+                videos: [
+                    { title: "Soon", link: "" },
+                    { title: "Soon", link: "" }
+                ]
+            },
+            "ue-book29": {
+                title: "Farm Animal Products",
+                bookLink: "https://drive.google.com/drive/folders/1RJVnFdzSPCrrtLkuNg9wHyoRjMkd1VGf?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/13D5ycpBJW1jlDv27lt76rfe8vTd1pxFW?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1q-t28-kUw3vHp2Kb-QJ9yKtxMEK0U4Ce?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1sePDwRakva9EdMBlL88pvDY9D9YpBHiO?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/JuCsj1FZ73C1vkPWyaYKzm?mode=ac_t",
+                videos: [
+                    { title: "Soon", link: "" },
+                    { title: "Soon", link: "" }
+                ]
+            },
+            "ue-book30": {
+                title: "Home Gardens",
+                bookLink: "https://drive.google.com/drive/folders/1femF_SnMCXXoXmx06Jk5gjYdXB_gguxl?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1nwIvKPLenImR4lbzkrlSHwpPF4iavV61?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1kfkbuevMHYiBTLWXsr6FxuSs8keURVsw?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1rV28VqSWVNuYVtMouuGm7cdOjhrLoB_k?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/JuCsj1FZ73C1vkPWyaYKzm?mode=ac_t",
+                videos: [
+                    { title: "Soon", link: "" },
+                    { title: "Soon", link: "" }
+                ]
+            },
+            "ue-book31": {
+                title: "Natural Resources and Human",
+                bookLink: "https://drive.google.com/drive/folders/168IlyJ0UqBZ7kCu8C2C60mwBVQiNU8bn?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1Z8nKhqxSJHXGo70xMvFFh_gECM3R__HE?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1YgEjcCL4ujhE2qL9M-uaGgzrqNBN8xJ1?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1Y-Lt7Z7Hcp6cpSL5QianmLFSWjd6G8H3?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/JuCsj1FZ73C1vkPWyaYKzm?mode=ac_t",
+                videos: [
+                    { title: "Soon", link: "" },
+                    { title: "Soon", link: "" }
+                ]
+            },
+            "ue-book32": {
+                title: "Principles in Nuclear Energy and it's Peaceful Applications",
+                bookLink: "https://drive.google.com/drive/folders/1Gxv9rh2H-b0RiWqFtkxaMfiCRvaOhJjh?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1Vl06my-gEMvOsramC83KK8wCHHFK5s3U?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1QCG8Kzq5k61d_S4EWOlFC2J83RumG9iP?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1vWcMCovVxz6qifp5yPSCCC3G-VOBNK04?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/JuCsj1FZ73C1vkPWyaYKzm?mode=ac_t",
+                videos: [
+                    { title: "Soon", link: "" },
+                    { title: "Soon", link: "" }
+                ]
+            },
+            "ue-book33": {
+                title: "Beekeeping",
+                bookLink: "https://drive.google.com/drive/folders/1f0MBE6cfYL6agY_Rqv3_59MiDtjs4oVL?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/113PByd-SghL7H7p_TYVYLXcmbwKnMel1?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/14y5tSGuVyHLiayZng_dBBOsvDal5RPL3?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1ZNhLdXgvJ1oQK7qi4IkP8ka1B9yqtzpy?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/JuCsj1FZ73C1vkPWyaYKzm?mode=ac_t",
+                videos: [
+                    { title: "Soon", link: "" },
+                    { title: "Soon", link: "" }
+                ]
+            },
+            "ue-book34": {
+                title: "Natural Plants of Jordan",
+                bookLink: "https://drive.google.com/drive/folders/1UkXfhyNhbnpMcqFx85qJITEcOL8a2XxG?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1rgt_CrnV_PGSJ5dAAvAPYV-lhizYfFsG?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1DN_0dPxQYcEckBnIrKFwZ0Ax9cqdc1vd?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1gaYfpPTX9itULNfP20-jFHO6hk3SibsE?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/JuCsj1FZ73C1vkPWyaYKzm?mode=ac_t",
+                videos: [
+                    { title: "Soon", link: "" },
+                    { title: "Soon", link: "" }
+                ]
+            },
+            "ue-book35": {
+                title: "Plant Earth Problems & Solutions",
+                bookLink: "https://drive.google.com/drive/folders/1wwwPdDSw_D8Zk4EVlHSd-cRjBFLnq26h?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/18SI7_wVqFsq7LAfia8E8-DY7_dfIns5w?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1VvxGwz_8I0LpSdyx6e2SR1zeYTS9WktQ?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/13gfw6xPceevtJUX-ChEOgxqg7Kj5vMzD?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/JuCsj1FZ73C1vkPWyaYKzm?mode=ac_t",
+                videos: [
+                    { title: "Soon", link: "" },
+                    { title: "Soon", link: "" }
+                ]
+            },
+            "ue-book36": {
+                title: "Sociology",
+                bookLink: "https://drive.google.com/drive/folders/13k-odBSHawxIl53tNzw6ZGg7vRy7JQqb?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1pqa6vZGLvmAfZ1cb0qOBbIWVO65emoqH?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1yh385Ed0qtJRpIgPS9pZQNE_NMSMnMUH?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1tjupeBueNpT7f5vpt7v45sW5WsOMoG23?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/JuCsj1FZ73C1vkPWyaYKzm?mode=ac_t",
+                videos: [
+                    { title: "Soon", link: "" },
+                    { title: "Soon", link: "" }
+                ]
+            },
+            "ue-book37": {
+                title: "Animal Health",
+                bookLink: "https://drive.google.com/drive/folders/1XH6pRa2wutfRCGYR5tv0oeR1B9W5yMD9?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1nDjcZPiyImF8g_23OkJiCCLPXrmaBcZ5?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1hJ8jOFho6MuupMsC1_z9eUIHedrQ-dyY?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/14kN6O0iIvGIRFrJEpcvcIEPrsO0Zxf_S?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/JuCsj1FZ73C1vkPWyaYKzm?mode=ac_t",
+                videos: [
+                    { title: "Soon", link: "" },
+                    { title: "Soon", link: "" }
+                ]
+            },
+            "ue-book38": {
+                title: "Pet Animal Care",
+                bookLink: "https://drive.google.com/drive/folders/1Ty_n8ZoKKqkS44GvGs5PHknaNctUuwwx?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/11_NjFzgtQ-Qc9xxnqJov1hzTCvOV_cJf?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1J6gdzVb1WdzlewHTIJm1EFM8nsj8Kl_K?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1X8B6x9jjtJ7vU7MUPnRH6dtuemDVs9Nz?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/JuCsj1FZ73C1vkPWyaYKzm?mode=ac_t",
+                videos: [
+                    { title: "Soon", link: "" },
+                    { title: "Soon", link: "" }
+                ]
+            },
+            "ue-book39": {
+                title: "Individual and Society",
+                bookLink: "https://drive.google.com/drive/folders/1TfPRyFSJd6aicGx-5NkG23nYgIgRHxTw?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1keIi8THtZDbSIa5YchB0LOMJ6EVQvYN1?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1Nw3m1SG4QRKT2l66xfgHBbDl_VEKmuCj?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1rIbd3rsljzOJrX3jdTlUZ_Qrs0mlk4Cc?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/JuCsj1FZ73C1vkPWyaYKzm?mode=ac_t",
+                videos: [
+                    { title: "Soon", link: "" },
+                    { title: "Soon", link: "" }
+                ]
+            },
+            "ue-book40": {
+                title: "Animal Behaviour and Welfare",
+                bookLink: "https://drive.google.com/drive/folders/1FIQFJCzVPgY6W3qpMGu3Lnze_cwscfUL?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1MGzASYkG1aQn5jyi086HfWMTqA2evlNc?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1xSnLucime36e7e9liT0CoWeX4AaYU0AI?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1dLJRAeNjGOL0kkWyrMMcwZnALoB-ee9e?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/JuCsj1FZ73C1vkPWyaYKzm?mode=ac_t",
+                videos: [
+                    { title: "Soon", link: "" },
+                    { title: "Soon", link: "" }
+                ]
+            },
+            "ue-book41": {
+                title: "Animal Products and Public Health",
+                bookLink: "https://drive.google.com/drive/folders/1q9Vtjxkpoqc85WkehhFEHf6pKdxFhXdy?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1wiLXNFdDteRvDdJEh93VNjGRU9kQsNgm?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1Zo71I3c79sG4GqixBWLKGgMnGmSF3d3H?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1K6Hll5GBVNMt6ePie6Kp6zfZIpXZl4HI?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/JuCsj1FZ73C1vkPWyaYKzm?mode=ac_t",
+                videos: [
+                    { title: "Soon", link: "" },
+                    { title: "Soon", link: "" }
+                ]
+            },
+            "ue-book42": {
+                title: "International Global Issues",
+                bookLink: "https://drive.google.com/drive/folders/1Y_8Y-Y-Qn5VWweqphRCnCzHQBvn8R_Rh?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1BJFSkUeyg5ygcjGWyhbd_zaXTVYIUOeU?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1DoSmkl3kimNWrxrU6i6nC35OPNcGT1Sx?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1OyfMGtIEFDIhBWKXaJ1ePYZc1HVSk0G7?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/JuCsj1FZ73C1vkPWyaYKzm?mode=ac_t",
+                videos: [
+                    { title: "Soon", link: "" },
+                    { title: "Soon", link: "" }
+                ]
+            },
+            "ue-book43": {
+                title: "History of Sciences in Islam",
+                bookLink: "https://drive.google.com/drive/folders/1yfYvDS4uyHU2mAdaG4Zq18VP3o4VT2Bv?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1D_O8edpvdSoer_70TID28l7JGyODlBaI?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1yDfQpS1o0ZqzDxY8fCrOOErpcF1FBQdb?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1_MWHHhWdDbzH8T2lYPSZwpDh8Ho3nNFo?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/JuCsj1FZ73C1vkPWyaYKzm?mode=ac_t",
+                videos: [
+                    { title: "Soon", link: "" },
+                    { title: "Soon", link: "" }
+                ]
+            },
+            "ue-book44": {
+                title: "Music Tasting",
+                bookLink: "https://drive.google.com/drive/folders/1ZUJybgmiDhlcitNWh_vYo67k_vgAEt4j?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1jZgH7b1L1XEgyzKgA6YS9MfFOAiN0YjY?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1jKEIo0JXuJNdDp8IuE3q2cwBGVYC2zDY?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1uc_Y24Iz7P1szaommG_E7UpfPnEreBGE?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/JuCsj1FZ73C1vkPWyaYKzm?mode=ac_t",
+                videos: [
+                    { title: "Soon", link: "" },
+                    { title: "Soon", link: "" }
+                ]
+            },
+            "ue-book45": {
+                title: "Sustainable Development and Environment",
+                bookLink: "https://drive.google.com/drive/folders/1YXdrfwQF5Lp78nyaVp0ciJcT7AvWMxkM?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1xyW_HGykUZnWkO702mp1v5wlV5EUa-0T?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1iAy7f2ryGDVN7bJfEcjoB4Ch8Ue-IQoL?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1i9CBEijZgpT_sR3GfQtqZn4bff-PffwT?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/JuCsj1FZ73C1vkPWyaYKzm?mode=ac_t",
+                videos: [
+                    { title: "Soon", link: "" },
+                    { title: "Soon", link: "" }
+                ]
+            },
+            "ue-book46": {
+                title: "Basic French Language",
+                bookLink: "https://drive.google.com/drive/folders/1933-TTVBex9WHAfCIFdbKePfgYn9dsz7?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1zX54wM_ss_VuDCTbHoqAmzRRmENR_XAb?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1bOurDjuWgDD1XuANYUrm9a4WmvVOp-Aj?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1wG0xHUTykAuXkKFlaws_ohzRzKYTbub2?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/JuCsj1FZ73C1vkPWyaYKzm?mode=ac_t",
+                videos: [
+                    { title: "Soon", link: "" },
+                    { title: "Soon", link: "" }
+                ]
+            },
+            "ue-book47": {
+                title: "Basic German Language",
+                bookLink: "https://drive.google.com/drive/folders/1QlB7Cxlu-hoAVm1mkvmvtjsjZbNbjj0T?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1h_PwgzeHkk_ZniYJZ6dodLN3gWVtan2e?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/18mDmYD8e07pdETUfUALpr780fcsR1RTs?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1ke5BpTNc4iUZ8S6c7k5vV-ZxVZi6MZo-?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/JuCsj1FZ73C1vkPWyaYKzm?mode=ac_t",
+                videos: [
+                    { title: "Soon", link: "" },
+                    { title: "Soon", link: "" }
+                ]
+            },
+            "ue-book48": {
+                title: "Spanish Language",
+                bookLink: "https://drive.google.com/drive/folders/1AukaXlVSBjornkbfkpNm5Msd_N_KrNap?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1feorPMYt6BfcH9DLn4VSVIFNk2wyELae?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1QlzFQWgv0mTjTtfG9itm7Af4izWBC0E1?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1lQ0dpiYeIO4ycPRTFDd7W8AeyCyL9OR3?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/JuCsj1FZ73C1vkPWyaYKzm?mode=ac_t",
+                videos: [
+                    { title: "Soon", link: "" },
+                    { title: "Soon", link: "" }
+                ]
+            },
+            "ue-book49": {
+                title: "Turkish Language",
+                bookLink: "https://drive.google.com/drive/folders/10FRu4yWNZnuCBDNI0gn5kqy6yuDMuqdo?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1utwU-PkSn199yQVscA9Lc7deccOe7s86?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1f_8_D65wW-tC2PpogKrjI7tgKyYIDPBi?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1DOaZqNf6CdNQ_O3NSSlHdd_4rap6HiUQ?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/JuCsj1FZ73C1vkPWyaYKzm?mode=ac_t",
+                videos: [
+                    { title: "Soon", link: "" },
+                    { title: "Soon", link: "" }
+                ]
+            },
+            
+            // Faculty Compulsory books (8) - Developed by: Bashar Jehad Younis
+            "fc-book1": {
+                title: "Calculus 1",
+                bookLink: "https://drive.google.com/drive/folders/1kEMpi1EKqijlO2z-1dsIQl7zJcG7hP-Z?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/15VIjbZ3o9nfzsPvANd53Ye2RkL1dIh12?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/14JMk5FpylIXFx5JoJk9_uufjyDjOGdMw?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1hVa2B14NLH-koxtFLB5ipNW7fIcU3AZV?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/JuCsj1FZ73C1vkPWyaYKzm?mode=ac_t",
+                videos: [
+                    { title: "الدكتور عبداللطيف", link: "https://youtube.com/playlist?list=PL8PqiXhu9aUoL3i2MwTSYi33gtIMAykUp&si=SiSYZ8qall284Wg5" },
+                    { title: "الطالب ليث العمري", link: "https://youtube.com/playlist?list=PLEt2IkxYfcu6DGhsrfLww21oBoRkDHqht&si=N_xeSOvChOtQnsnK" }
+                ]
+            },
+            "fc-book2": {
+                title: "Calculus 2",
+                bookLink: "https://drive.google.com/drive/folders/1fCgndoLlXBNg33yU4XWxsdz2xqfNfUUt?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1tjPHLiCPbp12Fji8G8bhdFPvq6wQx2c1?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1Qi9HESfoKfTBIt7aobURf5j0UyNpyR5U?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/15ZJA2CJoDZ_PlyyZuN9d9tUMXurz1Leb?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/JuCsj1FZ73C1vkPWyaYKzm?mode=ac_t",
+                videos: [
+                    { title: "الدكتور عبداللطيف", link: "https://youtube.com/playlist?list=PLFi1eGgZ7jfW-rAw6mDCNCB-7jCBFPZWu&si=fOPEXETKKyuoZEYr" },
+                    { title: "الطالب ليث العمري", link: "https://youtube.com/playlist?list=PLEt2IkxYfcu5KFiE-8kMfGf9AqC1LxT6M&si=wbH_6S5_ml5OhGjP" }
+                ]
+            },
+            "fc-book3": {
+                title: "Introduction to Information Technology",
+                bookLink: "https://drive.google.com/drive/folders/1EeOi_2tOQNjDu-YkoJPXaOEFqhwVEXXg?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1IQi15vLgVpvuo2pu8xw7kqsEAJ-CmVxM?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1junVwjR91SuqdFERhSKa3yot3PsJ8FuQ?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1HHoBMX4NM7U-yFP8wDVBrU7idjTWeTDg?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/JuCsj1FZ73C1vkPWyaYKzm?mode=ac_t",
+                videos: [
+                    { title: "الدكتور محمد ردايدة", link: "https://youtube.com/playlist?list=PLhJWPvzg9NTZYsMe_6rNMcBmooScGcvlv&si=14lOUvCdaenYmC-R" },
+                    { title: "الدكتور حمزة الكوفحي", link: "https://youtube.com/playlist?list=PLcy9pLDPXtFO_VhGYO9v2N8BQrtKyLkDj&si=ssn8t1hnvkEKBNHE" }
+                ]
+            },
+            "fc-book4": {
+                title: "Introduction to Programming",
+                bookLink: "https://drive.google.com/drive/folders/1UBS8n4uc3rAX8jLgbMP2-Zx0CI1mmXga?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1wpsfrU3x3VB94IOMxrNusJwodcUMt26G?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1jeH1hw17fBWxSxj3e1UXy4FjYKgrJF45?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1All_X9pJU47b5RMR8lzWT6AEP9aAajv2?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/JuCsj1FZ73C1vkPWyaYKzm?mode=ac_t",
+                videos: [
+                    { title: "عادل نسيم", link: "https://youtube.com/playlist?list=PLCInYL3l2AajFAiw4s1U4QbGszcQ-rAb3&si=8YMFG0j2wLEFtLiO" },
+                    { title: "الطالب مهيمن العمري", link: "https://youtube.com/playlist?list=PLzMa9tlovlupyavVoFzIJfg6ByYMAzbM8&si=-CZt_iNKk9mFIh1T" }
+                ]
+            },
+            "fc-book5": {
+                title: "Introduction to Programming (Lab)",
+                bookLink: "https://drive.google.com/drive/folders/1U1HKEVRuuq7CAuI_8XjvFrsAllb9KWf9?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/10fWcpywnsSH0haHzBrU4lIdGFPspvkrh?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1pJrfwGIBZ_zljs2vspwK1z2K3tLLzHPd?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1eVbpkv-MVkR64q7u14v2aYjWaUURZXia?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/JuCsj1FZ73C1vkPWyaYKzm?mode=ac_t",
+                videos: [
+                    { title: "الدكتورة رنا القرم", link: "https://youtube.com/playlist?list=PL-7edL7PWc7bWLl55hgxuQOgur7qPYm7F&si=n7kdMWzpMa92klT4" },
+                    { title: "الطلاب علي النجداوي وجميل مهنا", link: "https://youtube.com/playlist?list=PLVS43mVhT_-Rb7PchojKknfhi3z2cKxwD&si=VcWfj6nKCcZF2fF0" }
+                ]
+            },
+            "fc-book6": {
+                title: "Introduction to Object - Oriented Programming",
+                bookLink: "https://drive.google.com/drive/folders/1_W6cFf0AFQ8YmxNW2Sm_OR44ondKGelU?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1XR4q9u9xV2U7AZGq2hNzY8xWODJtfaWb?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1iIws0snHXKFe5LrK_IthvW7AQvWTuvF5?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1IowccPvVgnrOY6jSc-uH3xwXnffoHqbL?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/JuCsj1FZ73C1vkPWyaYKzm?mode=ac_t",
+                videos: [
+                    { title: "الدكتورة غدير عبيدات", link: "https://youtube.com/playlist?list=PLcy9pLDPXtFMl-9K0uVMVlQqoA6uA0JXn&si=Z54UCRD_I34LtBxY" },
+                    { title: "الطالب عيسى الملاحويش", link: "https://youtube.com/playlist?list=PLSeujJ0uaLbzNp1VCRKqTAbwLkzUtHG-8&si=ey2904b4E2KJ6rSs" }
+                ]
+            },
+            "fc-book7": {
+                title: "Introduction to Object - Oriented Programming (Lab)",
+                bookLink: "https://drive.google.com/drive/folders/13PnnfPIrDtcJfzDPUSiEoHSyMryFiChK?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1E30Zp_r6YYI8P33IEk5PrkLxSFstd_G_?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1rsQlB0iuDEVdvgsH4mt8kb-ipMs2KFYM?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1rslr--4bijc7GsxtfqEVcZ4a_8jRH_Yv?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/JuCsj1FZ73C1vkPWyaYKzm?mode=ac_t",
+                videos: [
+                    { title: "الدكتورة غدير عبيدات", link: "https://youtube.com/playlist?list=PLy42_pl2XRL76hOw8mR2zPL_AlaZ3hrOK&si=M-pFb5Pcx5edPFXm" },
+                    { title: "الطالب عيسى الملاحويش", link: "https://youtube.com/playlist?list=PLcy9pLDPXtFMPtqHFJmo9luCk5nZoayWt&si=x9tpkzj6uPyeRI1H" }
+                ]
+            },
+            "fc-book8": {
+                title: "Data Structures",
+                bookLink: "https://drive.google.com/drive/folders/1xR97TSjGMNwmspmkvwpEdyLG5Mzwl7hU?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1cJO49cTtNnBxmKxrOiUADT88luYDBH8v?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1zoyqWIcfSDCsEOqEvRRxObrYgCZXmLCG?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/137KCeQpfj_zqxpw6LfVzinD3YQwVubNa?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/JuCsj1FZ73C1vkPWyaYKzm?mode=ac_t",
+                videos: [
+                    { title: "الدكتورة رشا عبيدات", link: "https://youtube.com/playlist?list=PLy42_pl2XRL7IeunQnGETIkEP1-4OBp2R&si=bmQkZEeQfYKaIXi5" },
+                    { title: "الدكتورة غدير عبيدات", link: "https://youtube.com/playlist?list=PLcy9pLDPXtFPIJQXKyLpHiuxC-hj47Mv5&si=MkExUqCp_vT0bnwj" }
+                ]
+            },
+            "fc-book9": {
+                title: "Fundamentals of Database Systems",
+                bookLink: "https://drive.google.com/drive/folders/16uwrhWFpmkR7n9g-tUso3nSDgtQ41uKT?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1qs-yTHsYvA6mfzRmOGxtv35BW2BJFwc1?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1xPllyW6UILww61pW79CzUTtLaZbZ8cy1?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1ReyfevPwbFE6_dQEc3uOn00mTomt6iI9?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/JuCsj1FZ73C1vkPWyaYKzm?mode=ac_t",
+                videos: [
+                    { title: "الدكتور هشام عبندة", link: "https://youtube.com/playlist?list=PLy42_pl2XRL5YZzaXmYQxh8HtF6_hA6sH&si=7UvEk7oyOUp7WMdl" },
+                    { title: "الدكتور إياد الشريف", link: "https://youtube.com/playlist?list=PLuB2827yobpwtL0jEh4_QRCZt8_8VRg_p&si=fvSmSJ45t6m8Pdwe" }
+                ]
+            },
+            "fc-book10": {
+                title: "Discrete Mathematics",
+                bookLink: "https://drive.google.com/drive/folders/1iHas6SrUnRZguJcutFngI5pj-dDCVu5S?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1dOeovj5-1E-x9XsKvU4ty1Zjtcwzyqj9?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1eBq_W2hGMXIT7hBcoawNev3h8MEkIoXe?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1-ub34NRCaZyAcVBXUjaDEM0lw-5Ov90u?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/JuCsj1FZ73C1vkPWyaYKzm?mode=ac_t",
+                videos: [
+                    { title: "الطالبة الآء قطيشات", link: "https://youtube.com/playlist?list=PLwwGVo5DrXSLpYnq3jsrp5OvGoyBozhbg&si=CXyGiDN4keCA34_C" },
+                    { title: "الدكتورة هيام بطاينة", link: "https://youtube.com/playlist?list=PLy42_pl2XRL4B3400wurjykoSw4hpcT6B&si=DAEXTca6twqfsX44" }
+                ]
+            },
+            
+            // Department Compulsory books (32) - Developed by: Bashar Jehad Younis
+            "dc-book1": {
+                title: "General Physics (2)",
+                bookLink: "https://drive.google.com/drive/folders/1MicE5AvcdJcF9RXxwkT4n-BsOnF4A9nU?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1mrItZVNK_07jTzZzf-EjqGPw_HMR_f1f?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1xNH2h8wPYuumUGSViSVTq1j7ThWnCrfG?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1yAFTHib5gNoH3q8d4HrpUHQNtqOW9ilK?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/FEtFO4CBKjc2Swuam26Xz0?mode=ac_t",
+                videos: [
+                    { title: "Video 1", link: "https://youtube.com/video1" },
+                    { title: "Video 2", link: "https://youtube.com/video2" }
+                ]
+            },
+            "dc-book2": {
+                title: "Probability & Statistics",
+                bookLink: "https://drive.google.com/drive/folders/1G93Bfm8OBqXVlGMPT3W8fqyATkRnIWPL?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1PUxC29BFZpNZCEFxvH5uooii5ydv5F8t?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1dknuH1n2gV1icsVd2GmvMS2Irdb226vY?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1HHDYGaRytnhQ88zpe0c9SN-ba4uhFkv6?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/Ih62KTyDn7P1ZCNisucMsQ?mode=ac_t",
+                videos: [
+                    { title: "Video 1", link: "https://youtube.com/video1" },
+                    { title: "Video 2", link: "https://youtube.com/video2" }
+                ]
+            },
+            "dc-book3": {
+                title: "Linear Algebra",
+                bookLink: "https://drive.google.com/drive/folders/1_8gq5cPURtdJ6DEVq3XfO-HEep0rI-mJ?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1OudX1y0CrRLcwu6lSZxkwbEeIaDQ6OHT?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1MpAnqD0ut3o_3PbQIt4ysDm8m-x9D2YR?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1s05nMllFTLTx3Bmb3BQsJtN1F7JQDs0c?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/IlQU0I4WRiO2hr1bs84S2C?mode=ac_t",
+                videos: [
+                    { title: "Video 1", link: "https://youtube.com/video1" },
+                    { title: "Video 2", link: "https://youtube.com/video2" }
+                ]
+            },
+            "dc-book4": {
+                title: "Analysis and Design of Algorithms",
+                bookLink: "https://drive.google.com/drive/folders/1Txpv9GmLDse4jU-Yly18Ty9id08zw7fm?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1_tSoV_rUXXNRcsJidEB7c8YhzqfQdh6H?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/19HZhoXdNRVqemmW9YY1ZuqRRwzIbGLNq?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1z34oA4bVqSzmysu8EOwH0wVCOeObsE7C?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/G591BvK4QvFEtlwD22eFhn?mode=ac_t",
+                videos: [
+                    { title: "Video 1", link: "https://youtube.com/video1" },
+                    { title: "Video 2", link: "https://youtube.com/video2" }
+                ]
+            },
+            "dc-book5": {
+                title: "Communication & Professional Ethics",
+                bookLink: "https://drive.google.com/drive/folders/11vCRya5HuzoPzUi7LPtEhLCx2UwrpzDo?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1qJUV0PVvTcNtTWdNtMLQenRhdWAx5Je2?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1ye239jOvgR5TFbyrNNqhMn3MaqY_L30O?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1BuZ3Kk_ncwreA8zUNinQWWiNUh0mA1Qt?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/FO59Uf8xLVW3nfMMmOo260?mode=ac_t",
+                videos: [
+                    { title: "Video 1", link: "https://youtube.com/video1" },
+                    { title: "Video 2", link: "https://youtube.com/video2" }
+                ]
+            },
+            "dc-book6": {
+                title: "Systems Analysis and Design",
+                bookLink: "https://drive.google.com/drive/folders/1_IQbLKVO76ubL-3sLsuy3TBb9GA9Xohk?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1y1285fdDwKmegEtN-KGizTi3Ztph1XS7?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1Mb9TVgpHdGnLF0gtZNoIr3qRgV3oC2xf?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/17OgLi1xVZ3SUKD980rAURqgOW-PwIvBw?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/KreEkhkkyCGLLDlLfsaZpz?mode=ac_t",
+                videos: [
+                    { title: "Video 1", link: "https://youtube.com/video1" },
+                    { title: "Video 2", link: "https://youtube.com/video2" }
+                ]
+            },
+            "dc-book7": {
+                title: "Cybersecurity Fundamentals",
+                bookLink: "https://drive.google.com/drive/folders/1zanSC1wDBoSwf2i3UoX21FgFn20Sotp0?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1iDimJG_1H5dOFUk1B4jRwwq9VvnRfb9J?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1J4d6NmPCSCAePjcblY62pJZORMW7jnrd?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1LwX2kvqaxAKZCBpFCrmJ-AXSBlYISHNJ?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/FANT1N9kdhm05kYuEHYgYr?mode=ac_t",
+                videos: [
+                    { title: "Video 1", link: "https://youtube.com/video1" },
+                    { title: "Video 2", link: "https://youtube.com/video2" }
+                ]
+            },
+            "dc-book8": {
+                title: "Assembly Language Laboratory",
+                bookLink: "https://drive.google.com/drive/folders/1mmqSt3gtAq9maXHPzeWOzmpZ5r_UBsRJ?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1MmaFQ3OcEygPhPnHbyPmFgF_xBqHlC7a?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1MrB7_bTxcN4B1DNVXBZ_A-CUKFHyNCx6?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1conc6GfEHiTtTLYRGsLIbn3z_-GDIu_u?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/JzpmUOtzROk8BvBwPyqp2m?mode=ac_t",
+                videos: [
+                    { title: "Video 1", link: "https://youtube.com/video1" },
+                    { title: "Video 2", link: "https://youtube.com/video2" }
+                ]
+            },
+            "dc-book9": {
+                title: "Programming for Cybersecurity",
+                bookLink: "https://drive.google.com/drive/folders/1YEWQj9PFQvtpY7EksI3bjySaj7QSS-du?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1lmej4zcPTNPLz_3T_zYwdpltVu6YFQAg?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1E_wRk10CmOguC687nc6MllbN0hhqxJuK?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1Cqop8rrjIoxqDKyUPGjmAM5gFSTQnxja?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/Dr38llxyMzV5qo9MUHytpX?mode=ac_t",
+                videos: [
+                    { title: "Video 1", link: "https://youtube.com/video1" },
+                    { title: "Video 2", link: "https://youtube.com/video2" }
+                ]
+            },
+            "dc-book10": {
+                title: "Cryptography",
+                bookLink: "https://drive.google.com/drive/folders/1MPSqRx61ZIpeGprPzhBB_vZdCICOPLTT?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1P8x-qR3AN8eUBntjQii9e63a-Fbrxtzn?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1474ggH0M3ekr3JV82zYmtruGRCG93g-9?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1mrRsThY7aGYyrRFZsW-kpMtfhmH6xjpx?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/BXOOJlrngr43eoovrkxBib?mode=ac_t",
+                videos: [
+                    { title: "Video 1", link: "https://youtube.com/video1" },
+                    { title: "Video 2", link: "https://youtube.com/video2" }
+                ]
+            },
+            "dc-book11": {
+                title: "Database Systems Security",
+                bookLink: "https://drive.google.com/drive/folders/19Lq7JAP4w036bKsbX6mfLMArlG4z_v92?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1jtlWCklsHWlXJjoet3DJIFjuflAlkwBr?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1Pd86d5aB0CN2y1JbVatq-GoUYVgFnMVR?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1YdhS1GW09nanRQ4aoJGdz3lq7JtO2i7y?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/HARqt3b13t71G90k3Y03Wr?mode=ac_t",
+                videos: [
+                    { title: "Video 1", link: "https://youtube.com/video1" },
+                    { title: "Video 2", link: "https://youtube.com/video2" }
+                ]
+            },
+            "dc-book12": {
+                title: "Database Systems Security Lab",
+                bookLink: "https://drive.google.com/drive/folders/1No0nDrUnEQ-_oBcTWFaYX5tGk5QVcXAL?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1YIplN0x_ylXpT-CdebOGTp-T_sbBQBsX?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1t0AWREFKFi_fOFWpeNAu0kd5AOgquHxq?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1Az7K02BaqUyOfqi7ijyGIfN-uRz0KJnd?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/GsqKcAAiq5bGtl6pElaspf?mode=ac_t",
+                videos: [
+                    { title: "Video 1", link: "https://youtube.com/video1" },
+                    { title: "Video 2", link: "https://youtube.com/video2" }
+                ]
+            },
+            "dc-book13": {
+                title: "Computer Networks",
+                bookLink: "https://drive.google.com/drive/folders/1DU_yneH7iHlpKK_oPqYhDJUR_jiOiK-c?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1k6bqaXizfcNsQpGwiqklD4GM9X5sbxn7?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1FsJaQgna2gsGZZPLUjg9fu2-mjOrwMsQ?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1T5J4TURQOatYTPV19FmD12mE0LTEwHiw?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/JwDj0jLkGGR66AtHQXI2wU?mode=ac_t",
+                videos: [
+                    { title: "Video 1", link: "https://youtube.com/video1" },
+                    { title: "Video 2", link: "https://youtube.com/video2" }
+                ]
+            },
+            "dc-book14": {
+                title: "Computer Networks Laboratory",
+                bookLink: "https://drive.google.com/drive/folders/1n5I029zNQ9-glELVMlx_NabDKnWQQeup?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/18y63GJ-c5-Gbo-KqSOH8uS3fXtDDrEQu?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1MVWvEbvHCMqGyxHo97Tem6SkSYm1Bsa_?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1HTZcEHUwKIoFvo90zH4XKuiD9rlYYIej?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/DM4AX4pqA5hAqbRSwAddUp?mode=ac_t",
+                videos: [
+                    { title: "Video 1", link: "https://youtube.com/video1" },
+                    { title: "Video 2", link: "https://youtube.com/video2" }
+                ]
+            },
+            "dc-book15": {
+                title: "Networks Security & Defense",
+                bookLink: "https://drive.google.com/drive/folders/1rG8p_zl2sYmphLZamtb-1IuPQlVfhcnQ?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1XckjtSjWdJzPIvt4hti-4SwXmJwCwP1t?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1nlx1y2LiNRXS_Y3im2AQnOQzDxsLdaOM?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1cfdhksHErCX8-4P08a7WDL4dBzphk4ys?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/EQAQxAmi0woHTbfTMGdzw8?mode=ac_t",
+                videos: [
+                    { title: "Video 1", link: "https://youtube.com/video1" },
+                    { title: "Video 2", link: "https://youtube.com/video2" }
+                ]
+            },
+            "dc-book16": {
+                title: "Networks Security & Defense Lab",
+                bookLink: "https://drive.google.com/drive/folders/1fQcX211VJtFZ-lDspC-nA5rJZ6lOKrzx?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1A_slFRa4zQZlrIP_FW0bEME2QNxV6LIc?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1Dx1zVOYsAboEkok6plyinsjfASmiZICj?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1OU8kKpL-oMfqmxgCAxR7dZwlokRORMv2?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/EiZ1czEyjrUDWlgzNxaOUE?mode=ac_t",
+                videos: [
+                    { title: "Video 1", link: "https://youtube.com/video1" },
+                    { title: "Video 2", link: "https://youtube.com/video2" }
+                ]
+            },
+            "dc-book17": {
+                title: "Malware Analysis and Reverse Engineering",
+                bookLink: "https://drive.google.com/drive/folders/1-8bduTUORPPe0BskKBR-Hw5GoYyqKX9F?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/14iuUEvSEt9YnCSM2Re2vw8MTWsdg2VZL?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1sxpGspkFUM9NkPTxawHNHq8uDiVYMV41?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1H04XXNp_XYrDIS92xPOb3qT_z9BjiezB?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/G4NfYYo6nNO3q3Tld1zoze?mode=ac_t",
+                videos: [
+                    { title: "Video 1", link: "https://youtube.com/video1" },
+                    { title: "Video 2", link: "https://youtube.com/video2" }
+                ]
+            },
+            "dc-book18": {
+                title: "Infrastructure Security Using Linux",
+                bookLink: "https://drive.google.com/drive/folders/148pGgohyxVz5ViYU1zW4n_mtNJzCaBA8?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1kBKIsFTkfFhPXKAEa5WttxtEXJ9plVCQ?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/18ZiOwl7A9kiktV4X3k0aPJmpILhfW4zU?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1OH6K30IZAu-H-11yDhEX3nZ8Airb_Z0e?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/LC58DGSXxzD5Kbd2fAZVCJ?mode=ac_t",
+                videos: [
+                    { title: "Video 1", link: "https://youtube.com/video1" },
+                    { title: "Video 2", link: "https://youtube.com/video2" }
+                ]
+            },
+            "dc-book19": {
+                title: "Operating Systems and Security",
+                bookLink: "https://drive.google.com/drive/folders/1ceYtkQC-OQ_R9jdXLDoaoSI9hrdqWvp9?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1CMEZfspM7rQzyPmJqyZYAY3yahDAD1y7?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/10CFE_JwTZPnG47MkYenVYifyH5iRdY_t?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1dCqn36nSRdd-HqIsq7Y2hqAJ491cTb8-?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/Fg8QIYgf52Q6kiiZr7VWG2?mode=ac_t",
+                videos: [
+                    { title: "Video 1", link: "https://youtube.com/video1" },
+                    { title: "Video 2", link: "https://youtube.com/video2" }
+                ]
+            },
+            "dc-book20": {
+                title: "Risk Management",
+                bookLink: "https://drive.google.com/drive/folders/1xhSnahhofAKddZQp24p7OLAdswWuGNki?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1DuvwglfTeg_cMbSS-0D0at87V7iVEstI?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1mxd0KdCtxMejxojAblqfptcu_tIrb-zW?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1J5hiWCLnEYjnMDME1UA7retw4Idb9CRD?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/G2lHgybh7c1Illdzo8hB3n?mode=ac_t",
+                videos: [
+                    { title: "Video 1", link: "https://youtube.com/video1" },
+                    { title: "Video 2", link: "https://youtube.com/video2" }
+                ]
+            },
+            "dc-book21": {
+                title: "Cybersecurity Audits, Compliance, & Ethics",
+                bookLink: "https://drive.google.com/drive/folders/1ue_L_81mtfa8eFWoYekhS6tTiYj4LNLN?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1LK0sqkMkUxZJvKTK9540SulhkQWy42ta?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1zS3vyrHhlwSi1gQ81TKjC2_yx7UiFd4u?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1loGMjY0gDoHKqW7gtna5jhXmmZCvtMnA?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/CiOY5toiS7H1EwXVnP5oKR?mode=ac_t",
+                videos: [
+                    { title: "Video 1", link: "https://youtube.com/video1" },
+                    { title: "Video 2", link: "https://youtube.com/video2" }
+                ]
+            },
+            "dc-book22": {
+                title: "Software Security",
+                bookLink: "https://drive.google.com/drive/folders/1jDGqmNKjD7_h7D3u2swIvlnMe_ijQ18h?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1zJ9oIjR2MGnz3uKOA0dSN2cE81o2zGA1?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1qBLkdpzac5olaOfKb9Dgxp3hDbAF5ga9?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1vXj5-RbWJ05gacKO47ibU-xAApG9ZJeR?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/E9RWUy4W5DDJFbQ8Z2lr3R?mode=ac_t",
+                videos: [
+                    { title: "Video 1", link: "https://youtube.com/video1" },
+                    { title: "Video 2", link: "https://youtube.com/video2" }
+                ]
+            },
+            "dc-book23": {
+                title: "Web Development & Security",
+                bookLink: "https://drive.google.com/drive/folders/1DIn-H3tyDQ_jIMBYvLNX4g3yt3F_KnMn?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/18lIUDJmCHfI6bXtDH7ihSJpkPO-KHupd?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1dVlBc1nRBw3Z1fq08akXDUjTHek2jMRc?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1Ktjf6uCMVFiZjwDXZmO0rWIOskShCpP8?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/IJD9pooMWe5LcW0WMNDib1?mode=ac_t",
+                videos: [
+                    { title: "Video 1", link: "https://youtube.com/video1" },
+                    { title: "Video 2", link: "https://youtube.com/video2" }
+                ]
+            },
+            "dc-book24": {
+                title: "Web Development & Security Lab",
+                bookLink: "https://drive.google.com/drive/folders/1X1V_aEkbh7cXRy75roy6rXWt8aMyAPkD?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1Fh0FbWgloafBptM9-HHS6Ia4EeRfnwKf?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1TXpTQWQ8Ps_0DMGcGvPO9-1B0Ob_npKm?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1g5c4u0cJ1p4DhT2SAjHhuFLYVfEJrmNt?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/HDYYbuMghu1A5t4yJXHQtm?mode=ac_t",
+                videos: [
+                    { title: "Video 1", link: "https://youtube.com/video1" },
+                    { title: "Video 2", link: "https://youtube.com/video2" }
+                ]
+            },
+            "dc-book25": {
+                title: "Security Analytics",
+                bookLink: "https://drive.google.com/drive/folders/11KsiLmjs4utqvnJJeqUacGPvH1Y_X1l9?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1bkPV5hmM8nWFCqv2BWaN_fZCFjzkZr4S?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1CRZNZiW9GHmkHNmlCttm9SbLfd-lg7gf?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1hqC_ywrwI4o8_wKjGS9jj25LLsRYUZGh?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/BrmCGVk1B4WDjyDbp1OfrZ?mode=ac_t",
+                videos: [
+                    { title: "Video 1", link: "https://youtube.com/video1" },
+                    { title: "Video 2", link: "https://youtube.com/video2" }
+                ]
+            },
+            "dc-book26": {
+                title: "Ethical Hacking",
+                bookLink: "https://drive.google.com/drive/folders/1MssTc0NRLHU0nClN9jrOUFRChBVRufuL?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1Woyi9uJuXgJqTQg3PixXXJT3ECLd83Nm?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1MokLKaK8xx7AxOrLOqX2glcjHDpgL3R8?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1zKK3MY8UpCbZ3P2eU_KzKcM_007bXmoG?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/JYBITZ29tJu2Hggrgy5euX?mode=ac_t",
+                videos: [
+                    { title: "Video 1", link: "https://youtube.com/video1" },
+                    { title: "Video 2", link: "https://youtube.com/video2" }
+                ]
+            },
+            "dc-book27": {
+                title: "Ethical Hacking Lab",
+                bookLink: "https://drive.google.com/drive/folders/1-VZ-r5F4VLdNbz_cOweHbuDTCvrckHvl?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1trmzD1CcDvTjhgZaFqJ2iYWN7TIUiH9z?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1cX9zlLp5AvYvbLWlDQUtCkc2telLCE09?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/18u540TNcpEHmdkfFV3P5u8WtwHVb9FSh?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/JswF0qr9Cve9C5OoG8oDUe?mode=ac_t",
+                videos: [
+                    { title: "Video 1", link: "https://youtube.com/video1" },
+                    { title: "Video 2", link: "https://youtube.com/video2" }
+                ]
+            },
+            "dc-book28": {
+                title: "Digital Forensics",
+                bookLink: "https://drive.google.com/drive/folders/1DpZWCU5zuef_FDOIq2WYH3f3GL_OkmeH?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1X2MMTiRJDuirIg1VeouggcpTEpy65gjy?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1KUN54xgI0PW7K5JYbja_nbgGNWrqr4ii?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1BaoEjigTnI6dfTpZdUQ_iT5Bbd3MLJ4v?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/CAdsRCHPJE6K7ftcHMia7v?mode=ac_t",
+                videos: [
+                    { title: "Video 1", link: "https://youtube.com/video1" },
+                    { title: "Video 2", link: "https://youtube.com/video2" }
+                ]
+            },
+            "dc-book29": {
+                title: "Digital Forensics Laboratory",
+                bookLink: "https://drive.google.com/drive/folders/1naPAzI6jYHhqJzYoaclJ5KmqjN_c9Hu7?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/15P-8hfQD4HWbJsQ656wwi5FTC0l5pXSA?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1FOeQLONW0lcEHFfl8QdoRiNQI6r3CeIe?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1xSn8LuASAiXNsga6zwe8JaDmxJb6fdcU?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/F3JBOTnlYfiEeMDET4kYot?mode=ac_t",
+                videos: [
+                    { title: "Video 1", link: "https://youtube.com/video1" },
+                    { title: "Video 2", link: "https://youtube.com/video2" }
+                ]
+            },
+            "dc-book30": {
+                title: "Cybersecurity Capstone Project (1)",
+                bookLink: "https://drive.google.com/drive/folders/1_PPBB1F4H4Gyd5Eytsw6YZcUDMw37I5M?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1EdhBZHaJPLQ2ooAKgmddajfMRHosFFiU?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1yx-07dmoTiMN20Nz22ZPh5oBN7pH9Hkq?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/18PjfskSif-XNZUgfdLZipFah_CQyrNle?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/JuCsj1FZ73C1vkPWyaYKzm?mode=ac_t",
+                videos: [
+                    { title: "Video 1", link: "https://youtube.com/video1" },
+                    { title: "Video 2", link: "https://youtube.com/video2" }
+                ]
+            },
+            "dc-book31": {
+                title: "Cybersecurity Capstone Project (2)",
+                bookLink: "https://drive.google.com/drive/folders/1qlVbGNg0oDhsUw2Z1gGPDRPbunobNefb?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/14oEI8Mj1ZHIlMQVA9-KyHQCDNm97Fgy-?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1hplyWqAvmL1bz6rFN-rs-U4ILjGg0hcZ?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1cTOjeAU4Spg5DVs2GrmKunxEmJ0OctoM?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/JuCsj1FZ73C1vkPWyaYKzm?mode=ac_t",
+                videos: [
+                    { title: "Video 1", link: "https://youtube.com/video1" },
+                    { title: "Video 2", link: "https://youtube.com/video2" }
+                ]
+            },
+            "dc-book32": {
+                title: "Field Training",
+                bookLink: "https://drive.google.com/drive/folders/1Sv99zgjlFu3z5gvIj-cRXTwymGZg1pVV?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1UdG7w3W5zliM-HeXkNMzIAi8IjRiSrz4?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/18yQFlCANoY4677LX-ulmQbyW__e4GCIX?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1CUrK_WSeeQQAM2S5BxiTBJ4yCOSuL6D8?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/JuCsj1FZ73C1vkPWyaYKzm?mode=ac_t",
+                videos: [
+                    { title: "Video 1", link: "https://youtube.com/video1" },
+                    { title: "Video 2", link: "https://youtube.com/video2" }
+                ]
+            },
+            
+            // Department Elective books (12) - Developed by: Bashar Jehad Younis
+            "de-book1": {
+                title: "Mobile App Development",
+                bookLink: "https://drive.google.com/drive/folders/19m_p7YLL0qLPNyvCxsCLsc4S9g2UWlv9?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1UkqOj2-E9HUpS-QzHu8T_rmPFNWC5g5g?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1jDJOSYDcHZNF9FE_mWl8QKYF1KjA0YY4?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/13zhJe0eBD7pONOSqWdavO1D8o5-Vwe_1?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/I6zSPfo0jxc8K71fqJPqt2?mode=ac_t",
+                videos: [
+                    { title: "Video 1", link: "https://youtube.com/video1" },
+                    { title: "Video 2", link: "https://youtube.com/video2" }
+                ]
+            },
+            "de-book2": {
+                title: "Cloud Computing Security",
+                bookLink: "https://drive.google.com/drive/folders/1Q2VaZktXlMHVHLxBwbPovr4qFGzMPt2I?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1kL2jZU45yUv95AaHtAAtQveT3PX0NAxc?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1nBV7FWu_BdAPyxztt_pSJE-X5w4pLkPu?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1mz0p7igs5xQdf0GPDMDuelZHpb-DaVMF?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/K7CCQ90ga1DEJXsFjhtPNR?mode=ac_t",
+                videos: [
+                    { title: "Video 1", link: "https://youtube.com/video1" },
+                    { title: "Video 2", link: "https://youtube.com/video2" }
+                ]
+            },
+            "de-book3": {
+                title: "IoT Security",
+                bookLink: "https://drive.google.com/drive/folders/17mFbehC0N9on8oE8876e8sn_4k95nE2z?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1yr8Q2JBlgLv-cFPYLe2sD51QAGsLCavT?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/18TSznPhxsYkrmovAHdEESmwiT61AtxU2?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1aP5Q-MD3fQrFY2YSp648-GZuawU6Ltq6?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/JbhiqgzKoka4tJZyWWqf1k?mode=ac_t",
+                videos: [
+                    { title: "Video 1", link: "https://youtube.com/video1" },
+                    { title: "Video 2", link: "https://youtube.com/video2" }
+                ]
+            },
+            "de-book4": {
+                title: "Healthcare Security and Privacy",
+                bookLink: "https://drive.google.com/drive/folders/18mN4gW-3UrlR0BIZzXKqMwHFgfXSGyuA?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1GO_uKLhwxfLBxRVM4eI5xHx6wESTsqvH?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1VcgmFbfPfWWcVCVufg0OYYCyozFuPbyq?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1r_evb8YvCUqXExqVvtWKReR2OcFzi0FS?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/HrOdDBvVwD8DJfwOql6IbS?mode=ac_t",
+                videos: [
+                    { title: "Video 1", link: "https://youtube.com/video1" },
+                    { title: "Video 2", link: "https://youtube.com/video2" }
+                ]
+            },
+            "de-book5": {
+                title: "Deep Learning",
+                bookLink: "https://drive.google.com/drive/folders/1svLFKsPPQWvIdKDza5sDCSkavHIeWB-b?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1ZPv81pD3rSDMv-0rK7af265ODsJIBMx9?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/11u1rOGfoc9aDEbOnd4tJ4b7rf3rPHess?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1UBHpCH1S7qYhI4X4zGw0t2XPkqkFgf7h?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/GABSGotnlcj7uipOSLrBM9?mode=ac_t",
+                videos: [
+                    { title: "Video 1", link: "https://youtube.com/video1" },
+                    { title: "Video 2", link: "https://youtube.com/video2" }
+                ]
+            },
+            "de-book6": {
+                title: "Introduction to Steganography",
+                bookLink: "https://drive.google.com/drive/folders/1HEAn3oO5JyDodU-MTv_YNVCOPTsfeWRX?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1yP0MqXueP5wYZTFGof201cKnXNbg05hT?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1sLn5gR1tE-Du08ClRFvNVkpu0FxhqWjS?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1lWu3Dtat1L2_UZds2qAkX6lj1j3VgI5q?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/BuqKcAyiMgqJytWi7Yhwsc?mode=ac_t",
+                videos: [
+                    { title: "Video 1", link: "https://youtube.com/video1" },
+                    { title: "Video 2", link: "https://youtube.com/video2" }
+                ]
+            },
+            "de-book7": {
+                title: "Advanced Cryptography",
+                bookLink: "https://drive.google.com/drive/folders/17g1JuSnK2zE0eK_EcmU4_URx-ry1Rkqs?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1aogoNyfyC_Z9FqOi5RNtywueSlv8a9Sq?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1_H3KKfBVhTPYFBTv7mWOLmZ_Fm0p-etL?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1Q0WOOkqKTpxPJ2DfPvZJGHenROTnl1oz?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/IDu8nuPCCHR04eeG2wpw2o?mode=ac_t",
+                videos: [
+                    { title: "Video 1", link: "https://youtube.com/video1" },
+                    { title: "Video 2", link: "https://youtube.com/video2" }
+                ]
+            },
+            "de-book8": {
+                title: "Introduction to Hardware Security",
+                bookLink: "https://drive.google.com/drive/folders/1B0jaqJpe2DlxkNXxUqmJfJr9_30Dj2Tr?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1gWn-QDBFbkpreyWmugCmSyUE45PF51BP?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1XuUy89pT19TaGI_LDmqa8o7VjFBbzPfg?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1rcaYrUzrLKwDyXtvHZQve-iO6n5G6Sdk?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/LSjvLLxwpHo49u1a3fNjvY?mode=ac_t",
+                videos: [
+                    { title: "Video 1", link: "https://youtube.com/video1" },
+                    { title: "Video 2", link: "https://youtube.com/video2" }
+                ]
+            },
+            "de-book9": {
+                title: "Formal Methods for Cybersecurity",
+                bookLink: "https://drive.google.com/drive/folders/1qqaeE0HkRRE2rxHFr6aIdRvEdLSm7pmG?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1lmB5tJQfCcsorpVG5EXYfOc_pz_lacoW?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/10UzwgshPXiNNQ_EaJuh4bS3_2Ok6sK0W?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1_r-dw44aEGSnoqfRNEy3KE67eCWasCL8?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/KQ8gETWsUaMGRKk9LKcXSw?mode=ac_t",
+                videos: [
+                    { title: "Video 1", link: "https://youtube.com/video1" },
+                    { title: "Video 2", link: "https://youtube.com/video2" }
+                ]
+            },
+            "de-book10": {
+                title: "Mobile and Wireless Security",
+                bookLink: "https://drive.google.com/drive/folders/1S4vu7sV5VuMqGf2Ha0yj-sTbBR_EeTcP?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1jAy6LXRHpZ1jECC3YRtoPHh_GNkCsWpR?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1UUErinsZAQKAIOX58T7bBbLbF1tZwfWH?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1qfF9zng2P9NAP5RaAIS_PdEA2yCe_X4r?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/KdAAJp2Xoml8mxqHyd7xoU?mode=ac_t",
+                videos: [
+                    { title: "Video 1", link: "https://youtube.com/video1" },
+                    { title: "Video 2", link: "https://youtube.com/video2" }
+                ]
+            },
+            "de-book11": {
+                title: "Special Topics in Cybersecurity (1)",
+                bookLink: "https://drive.google.com/drive/folders/13yf1Kwv-tHad37KAuBi7BEeYOq8RQ1PV?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1BpMe-wlaSOs_DsF8J4IYhucFziuc7SI5?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1P0KAVHoT4ccElNWpkWDzUCgUG4A8Yi2h?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1CjH8jdHSOL_wKWOkrJspFROSzlzwlHai?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/CdXEFUOKOkjDGnGiSIyJAK?mode=ac_t",
+                videos: [
+                    { title: "Video 1", link: "https://youtube.com/video1" },
+                    { title: "Video 2", link: "https://youtube.com/video2" }
+                ]
+            },
+            "de-book12": {
+                title: "Special Topics in Cybersecurity (2)",
+                bookLink: "https://drive.google.com/drive/folders/1do5mSUKa9hX-y35Z63Q-_fhQWVvf3OYh?usp=drive_link",
+                slidesLink: "https://drive.google.com/drive/folders/1EwfL3PeMIDhFOPl_dQcN44vrXb38JxA0?usp=drive_link",
+                questionsLink: "https://drive.google.com/drive/folders/1HH4RR_OpRKIdfVjGj43AfNo4uXg87jqW?usp=drive_link",
+                filesLink: "https://drive.google.com/drive/folders/1idMt6STwldsTqLamL1610ZbQaF2HuFNm?usp=drive_link",
+                groupLink: "https://chat.whatsapp.com/H2OO3vvkDyeBhXSbTRPx4Q?mode=ac_t",
+                videos: [
+                    { title: "Video 1", link: "https://youtube.com/video1" },
+                    { title: "Video 2", link: "https://youtube.com/video2" }
+                ]
+            }
+        };
+
+        // Special messages for Department Compulsory Books 30, 31, 32 - Developed by: Bashar Jehad Younis
+        const specialBookMessages = {
+            "dc-book30": {
+                title: "Cybersecurity Capstone Project (1)",
+                icon: "fas fa-book",
+                items: [
+                    "Soon.."
+                ]
+            },
+            "dc-book31": {
+                title: "Cybersecurity Capstone Project (2)",
+                icon: "fas fa-book",
+                items: [
+                    "Soon.."
+                ]
+            },
+            "dc-book32": {
+                title: "Field Training",
+                icon: "fas fa-book",
+                items: [
+                    "Soon.."
+                ]
+            }
+        };
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Create stars background - Developed by: Bashar Jehad Younis
+            const starsContainer = document.querySelector('.stars-background');
+            const starCount = 150;
+            
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                
+                const size = Math.random() * 3;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.top = `${Math.random() * 100}%`;
+                
+                const duration = 2 + Math.random() * 3;
+                const delay = Math.random() * 5;
+                star.style.animation = `twinkle ${duration}s ${delay}s infinite`;
+                
+                starsContainer.appendChild(star);
+            }
+
+            // Dropdown functionality - Developed by: Bashar Jehad Younis
+            const dropdownContainer = document.querySelector('.dropdown-container');
+            const studyMaterialsBtn = document.querySelector('.study-materials-btn');
+
+            document.addEventListener('click', function(e) {
+                if (!dropdownContainer.contains(e.target)) {
+                    dropdownContainer.classList.remove('active');
+                    studyMaterialsBtn.classList.remove('active');
+                }
+            });
+
+            studyMaterialsBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                dropdownContainer.classList.toggle('active');
+                this.classList.toggle('active');
+            });
+
+            // Book menu functionality - Developed by: Bashar Jehad Younis
+            const bookMenuButtons = [
+                'supplementary-btn',
+                'univ-compulsory-btn',
+                'univ-elective-btn',
+                'faculty-compulsory-btn',
+                'dept-compulsory-btn',
+                'dept-elective-btn'
+            ];
+
+            bookMenuButtons.forEach(id => {
+                const button = document.getElementById(id);
+                button.addEventListener('click', function() {
+                    document.querySelectorAll('.book-menu').forEach(menu => {
+                        menu.classList.remove('active');
+                    });
+                    
+                    const menuId = id.replace('-btn', '-menu');
+                    document.getElementById(menuId).classList.add('active');
+                });
+            });
+
+            // Close book menus - Developed by: Bashar Jehad Younis
+            document.querySelectorAll('.close-book-menu').forEach(button => {
+                button.addEventListener('click', function() {
+                    this.closest('.book-menu').classList.remove('active');
+                });
+            });
+            
+            // Add event listeners to book items - Developed by: Bashar Jehad Younis
+            document.querySelectorAll('.book-item').forEach(book => {
+                book.addEventListener('click', function() {
+                    const bookId = this.getAttribute('data-book-id');
+                    if (bookId in specialBookMessages) {
+                        showBookMessage(bookId);
+                    } else {
+                        showBookCard(bookId);
+                    }
+                });
+            });
+        });
+
+        function showCyberMessage() {
+            const modal = document.getElementById('cyber-modal');
+            modal.style.display = 'flex';
+            
+            modal.onclick = function(e) {
+                if(e.target === modal || e.target.classList.contains('close-modal')) {
+                    modal.style.display = 'none';
+                }
+            }
+            
+            document.addEventListener('keydown', function(e) {
+                if(e.key === 'Escape') modal.style.display = 'none';
+            });
+        }
+        
+        function showBookCard(bookId) {
+            const bookData = booksData[bookId];
+            if (bookData) {
+                document.getElementById('book-card-title').textContent = bookData.title;
+                document.getElementById('book-link').href = bookData.bookLink;
+                document.getElementById('slides-link').href = bookData.slidesLink;
+                document.getElementById('questions-link').href = bookData.questionsLink;
+                document.getElementById('files-link').href = bookData.filesLink;
+                document.getElementById('group-link').href = bookData.groupLink;
+                
+                // Set video titles and links - Developed by: Bashar Jehad Younis
+                if (bookData.videos && bookData.videos.length >= 2) {
+                    document.getElementById('video-title-1').textContent = bookData.videos[0].title;
+                    document.getElementById('video-title-2').textContent = bookData.videos[1].title;
+                    
+                    const video1 = document.querySelector('#video-title-1').closest('.video-item');
+                    const video2 = document.querySelector('#video-title-2').closest('.video-item');
+                    
+                    video1.onclick = () => window.open(bookData.videos[0].link, '_blank');
+                    video2.onclick = () => window.open(bookData.videos[1].link, '_blank');
+                }
+                
+                document.getElementById('book-card').classList.add('active');
+            }
+        }
+        
+        function closeBookCard() {
+            document.getElementById('book-card').classList.remove('active');
+        }
+        
+        function showBookMessage(bookId) {
+            const messageData = specialBookMessages[bookId];
+            if (messageData) {
+                const modal = document.getElementById('book-message-modal');
+                const titleElement = document.getElementById('book-message-title');
+                const contentElement = document.getElementById('book-message-content');
+                
+                // Set title with icon - Developed by: Bashar Jehad Younis
+                titleElement.innerHTML = `<i class="${messageData.icon}"></i> ${messageData.title}`;
+                
+                contentElement.innerHTML = '';
+                messageData.items.forEach(item => {
+                    const li = document.createElement('li');
+                    li.textContent = item;
+                    contentElement.appendChild(li);
+                });
+                
+                // Display the modal - Developed by: Bashar Jehad Younis
+                modal.style.display = 'flex';
+                
+                // Close functionality - Developed by: Bashar Jehad Younis
+                modal.onclick = function(e) {
+                    if(e.target === modal || e.target.classList.contains('close-modal')) {
+                        modal.style.display = 'none';
+                    }
+                }
+                
+                document.addEventListener('keydown', function(e) {
+                    if(e.key === 'Escape') modal.style.display = 'none';
+                });
+            }
+        }
+    </script>
+</body>
+<!-- Developed by: Bashar Jehad Younis -->
+</html>
