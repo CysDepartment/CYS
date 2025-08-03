@@ -1,0 +1,1200 @@
+<!DOCTYPE html>
+<!-- © 2025 All rights reserved.
+
+It is strictly prohibited to use, copy, republish, or modify this code in any form without the express written consent of the owner and developer of the website, Bashar Jehad Younis. Any unauthorized use will expose the perpetrator to legal liability. Please note that I have contacted the Head of the Cybersecurity Department at the Jordan University of Science and Technology and obtained official approval to publish this website.
+
+© 2025 جميع الحقوق محفوظة.
+
+يحظر استخدام هذا الكود أو نسخه أو إعادة نشره أو تعديله بأي شكل من الأشكال دون الحصول على موافقة خطية صريحة من مالك ومصمم الموقع بشار جهاد يونس. وبالتناوب إن أي استخدام غير مصرح به سيعرض القائم به للمساءلة القانونية. علمًا أنني قد تواصلت مع رئيس قسم الأمن السيبراني في جامعة العلوم والتكنولوجيا الأردنية، وحصلت على الموافقة الرسمية منه لنشر هذا الموقع. -->
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GC411355JP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-GC411355JP');
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self';
+              script-src 'self' https://cdnjs.cloudflare.com https://html2canvas.hertzen.com 'unsafe-inline';
+              style-src 'self' https://cdnjs.cloudflare.com 'unsafe-inline';
+              img-src 'self' data:;
+              font-src 'self' https://cdnjs.cloudflare.com;
+              connect-src 'self';
+              object-src 'none';
+              base-uri 'self';">
+    <meta name="description" content="GPA Calculator">
+    <meta name="keywords" content="Cybersecurity Department, GPA Calculator, GPA, Calculator">
+    <title>GPA Calculator</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <style>
+        :root {
+            --primary-color: #0a0a2a;
+            --secondary-color: #00f3ff;
+            --accent-color: #ff00ff;
+            --text-color: #ffffff;
+            --menu-green: #00ff88;
+            --menu-dark-green: #009944;
+            --required-color: #ff4444;
+            --button-blue: #007bff;
+            --button-red: #dc3545;
+            --button-green: #28a745;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--primary-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+            -webkit-tap-highlight-color: transparent;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .stars-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .star {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            animation: twinkle linear infinite;
+            will-change: transform, opacity;
+            z-index: 0;
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1); }
+            100% { opacity: 0; transform: scale(0.3); }
+        }
+
+        .gpa-header {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2;
+            border-bottom: 2px solid var(--secondary-color);
+            text-align: center;
+        }
+
+        .gpa-title {
+            font-size: 2.5rem;
+            background: linear-gradient(45deg, var(--secondary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 15px rgba(0, 243, 255, 0.4);
+            letter-spacing: 1.5px;
+            font-weight: 700;
+            position: relative;
+        }
+
+        .gpa-subtitle {
+            font-size: 1.1rem;
+            color: rgba(0, 243, 255, 0.9);
+            text-shadow: 0 0 8px rgba(0, 243, 255, 0.2);
+            font-weight: 300;
+            letter-spacing: 0.5px;
+            margin-top: 0.8rem;
+            max-width: 800px;
+        }
+
+        .home-button {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 3;
+        }
+
+        .home-button:hover {
+            color: var(--accent-color);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .home-button i {
+            color: var(--secondary-color);
+            font-size: 1.8rem;
+            transition: color 0.3s ease;
+        }
+
+        .home-button:hover i {
+            color: var(--accent-color);
+        }
+
+        .calculator-container {
+            max-width: 850px;
+            margin: 1.5rem auto;
+         /* padding: 1.5rem; */
+            background: rgba(10, 10, 42, 0.7);
+            border-radius: 15px;
+       /*   border: 2px solid var(--secondary-color); */
+       /*   box-shadow: 0 0 25px rgba(0, 243, 255, 0.2); */
+            position: relative;
+            z-index: 2;
+            flex-grow: 1;
+         /* height: 75vh; */
+            overflow-y: auto;
+        }
+
+        .calculator-container::-webkit-scrollbar {
+            width: 8px;
+            background: transparent;
+        }
+
+        .calculator-container:hover::-webkit-scrollbar {
+            width: 8px;
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        .calculator-container::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        .calculator-container::-webkit-scrollbar-thumb {
+            background: var(--secondary-color);
+            border-radius: 10px;
+            transition: background 0.3s ease;
+        }
+
+        .calculator-container::-webkit-scrollbar-thumb:hover {
+            background: #00c4ff;
+        }
+
+        .calculator-container::-webkit-scrollbar-thumb:active {
+            background: var(--accent-color);
+        }
+
+        .calculator-header {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .calculator-header h2 {
+            font-size: 1.8rem;
+            background: linear-gradient(45deg, var(--secondary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 15px rgba(0, 243, 255, 0.3);
+        }
+
+        .calculator-header p {
+            color: rgba(0, 243, 255, 0.8);
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 0.95rem;
+        }
+
+        .calculator-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .input-section {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1.2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 243, 255, 0.2);
+        }
+
+        .course-row {
+            margin-bottom: 1.2rem;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1rem;
+            border-radius: 10px;
+            border: 1px solid rgba(0, 243, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .course-row:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(0, 243, 255, 0.4);
+        }
+
+        .input-group {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .form-label {
+            font-weight: 350;
+            color: var(--secondary-color);
+            margin-bottom: 0.4rem;
+            font-size: 0.85rem;
+        }
+
+        .required-star {
+            color: var(--required-color);
+            font-size: 0.75em;
+            margin-left: 3px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem;
+            background: rgba(0, 0, 0, 0.6);
+            border: 2px solid var(--secondary-color);
+            border-radius: 6px;
+            color: var(--text-color);
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            height: 45px;
+        }
+
+        .form-control:focus {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 10px rgba(255, 0, 255, 0.3);
+        }
+
+        .number-input {
+            position: relative;
+        }
+
+        .number-controls {
+            position: absolute;
+            right: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .number-btn {
+            width: 20px;
+            height: 16px;
+            background: var(--secondary-color) !important;
+            border: none;
+            color: white !important;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+            font-size: 0.7rem;
+            box-shadow: 0 2px 4px rgba(0, 243, 255, 0.3);
+        }
+
+        .number-btn:hover {
+            background: #00c4ff !important;
+            transform: scale(1.1);
+        }
+
+        input[type="number"]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        .grade {
+            background: rgba(0, 0, 0, 0.4);
+            border: 2px solid var(--secondary-color);
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2300f3ff'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            background-size: 14px;
+            cursor: pointer;
+        }
+
+        select option {
+            background: var(--primary-color);
+            color: var(--text-color);
+            padding: 8px;
+        }
+
+        #cumulativeFields {
+            display: none;
+            margin-top: 1rem;
+            padding: 1.2rem;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 12px;
+            border: 2px solid var(--accent-color);
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .toggle-switch {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 45px;
+            height: 24px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: var(--secondary-color);
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(21px);
+        }
+
+        .result-box {
+            background: rgba(10, 10, 42, 0.95);
+            padding: 1.2rem;
+            border-radius: 12px;
+            border: 2px solid var(--secondary-color);
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.2);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .gpa-results-title {
+            text-align: center;
+            color: #00ff88;
+            font-size: 1.6rem !important;
+            margin-bottom: 1.2rem !important;
+            text-shadow: 0 0 15px rgba(0, 255, 136, 0.4);
+        }
+
+        .advanced-fields {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .result-item p {
+            color: var(--text-color);
+            font-size: 0.85rem !important;
+        }
+
+        .result-item h4 {
+            color: var(--accent-color);
+            margin-bottom: 0;
+            min-width: 140px;
+            font-size: 0.85rem !important;
+            margin: 0.2rem 0;
+        }
+
+        .result-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 8px 0;
+            padding: 6px 0;
+        }
+
+        .result-separator {
+            border: 1px solid var(--secondary-color);
+            margin: 1.2rem 0;
+            opacity: 0.3;
+        }
+
+        .compact-button {
+            background: linear-gradient(45deg, #6a11cb, #2575fc);
+            border: 2px solid #6a11cb;
+            padding: 8px 16px;
+            gap: 6px;
+            transition: all 0.3s ease;
+            font-size: 0.85rem;
+            border-radius: 25px;
+            cursor: pointer;
+            color: white;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .compact-button i {
+            color: #fff;
+            font-size: 12px;
+            margin-right: 5px;
+        }
+
+        .compact-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(106, 17, 203, 0.4);
+            background: linear-gradient(45deg, #2575fc, #6a11cb);
+        }
+
+        .calculator-buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .calculator-buttons .compact-button:nth-child(1) {
+            background: linear-gradient(45deg, var(--button-blue), #0069d9) !important;
+            border: 2px solid var(--button-blue) !important;
+        }
+        .calculator-buttons .compact-button:nth-child(1):hover {
+            background: linear-gradient(45deg, #0069d9, var(--button-blue)) !important;
+            box-shadow: 0 4px 12px rgba(0, 123, 255, 0.4) !important;
+        }
+        
+        .calculator-buttons .compact-button:nth-child(2) {
+            background: linear-gradient(45deg, var(--button-red), #bd2130) !important;
+            border: 2px solid var(--button-red) !important;
+        }
+        .calculator-buttons .compact-button:nth-child(2):hover {
+            background: linear-gradient(45deg, #bd2130, var(--button-red)) !important;
+            box-shadow: 0 4px 12px rgba(220, 53, 69, 0.4) !important;
+        }
+        
+        .calculator-buttons .compact-button:nth-child(3) {
+            background: linear-gradient(45deg, var(--button-green), #218838) !important;
+            border: 2px solid var(--button-green) !important;
+        }
+        .calculator-buttons .compact-button:nth-child(3):hover {
+            background: linear-gradient(45deg, #218838, var(--button-green)) !important;
+            box-shadow: 0 4px 12px rgba(40, 167, 69, 0.4) !important;
+        }
+
+        .download-btn-container {
+            text-align: center;
+            margin: 1rem 0 0.5rem;
+            position: relative;
+        }
+
+        .download-btn {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--secondary-color), var(--accent-color));
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .download-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 15px var(--accent-color);
+        }
+
+        .download-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            background: linear-gradient(45deg, #666, #999);
+        }
+
+        .grade, #facultySelect, #specializationSelect {
+            cursor: pointer;
+        }
+
+        .grade:hover, #facultySelect:hover, #specializationSelect:hover {
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 6px rgba(0, 243, 255, 0.3);
+        }
+
+        footer {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 1.2rem;
+            border-top: 2px solid var(--secondary-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            text-align: center;
+        }
+
+        .copyright {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.7);
+            font-weight: 300;
+            margin: 0;
+            width: 100%;
+        }
+
+        .advanced-button {
+            background: linear-gradient(45deg, var(--accent-color), #cc00cc);
+            border: 2px solid var(--accent-color);
+            padding: 10px 20px;
+            border-radius: 25px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin: 1rem auto;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .advanced-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 0, 255, 0.4);
+            background: linear-gradient(45deg, #cc00cc, var(--accent-color));
+        }
+
+        .advanced-buttons-container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 1rem;
+            gap: 10px;
+        }
+
+        /* Media queries - Developed by: Bashar Jehad Younis */
+        @media (max-width: 992px) {
+            .calculator-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .gpa-title {
+                font-size: 2rem;
+            }
+            
+            .gpa-subtitle {
+                font-size: 0.95rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .gpa-header {
+                padding: 1.2rem 1rem;
+            }
+            
+            .gpa-title {
+                font-size: 1.7rem;
+            }
+            
+            .home-button {
+                top: 50%;
+                transform: translateY(-50%);
+                width: 38px;
+                height: 38px;
+            }
+            
+            .calculator-container {
+                padding: 1rem;
+                margin: 1rem;
+                height: 80vh;
+            }
+            
+            .calculator-header h2 {
+                font-size: 1.6rem;
+            }
+            
+            .input-group {
+                grid-template-columns: 1fr;
+            }
+            
+            .gpa-results-title {
+                font-size: 1.4rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gpa-title {
+                font-size: 1.4rem;
+            }
+            
+            .gpa-subtitle {
+                font-size: 0.85rem;
+            }
+            
+            .calculator-header h2 {
+                font-size: 1.3rem;
+            }
+            
+            .result-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 4px;
+            }
+            
+            .result-item h4 {
+                min-width: auto;
+            }
+            
+            .advanced-buttons-container {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars-background"></div>
+
+    <header class="gpa-header">
+        <a href="index.html" class="home-button">
+            <i class="fas fa-home"></i>
+        </a>
+        <h1 class="gpa-title">GPA Calculator</h1>
+    </header>
+
+    <main class="calculator-container">
+        <div class="calculator-header">
+        </div>
+
+        <div class="calculator-content">
+            <div class="input-section">
+                <div class="toggle-switch">
+                    <span>Enable Cumulative GPA:</span>
+                    <label class="switch">
+                        <input type="checkbox" id="cumulativeToggle" onclick="toggleCumulative()">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+
+                <div id="cumulativeFields">
+                    <div class="input-group">
+                        <div>
+                            <label class="form-label">Previous Credits</label>
+                            <div class="number-input">
+                                <input type="number" class="form-control" 
+                                       id="previousHours" min="0" max="300"
+                                       placeholder="">
+                                <div class="number-controls">
+                                    <button class="number-btn" onclick="adjustNumber(this, 1)">▲</button>
+                                    <button class="number-btn" onclick="adjustNumber(this, -1)">▼</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="form-label">Previous GPA</label>
+                            <div class="number-input">
+                                <input type="number" step="0.01" class="form-control" 
+                                       id="previousGPA" min="0" max="4.2"
+                                       placeholder="">
+                                <div class="number-controls">
+                                    <button class="number-btn" onclick="adjustNumber(this, 0.1)">▲</button>
+                                    <button class="number-btn" onclick="adjustNumber(this, -0.1)">▼</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="courseInputs"></div>
+
+                <div class="buttons-group calculator-buttons">
+                    <button class="compact-button" onclick="addCourse()">
+                        <i class="fas fa-plus"></i>
+                        <span>Add Course</span>
+                    </button>
+                    <button class="compact-button" onclick="resetCourses()">
+                        <i class="fas fa-redo"></i>
+                        <span>Reset</span>
+                    </button>
+                    <button class="compact-button" onclick="calculate()">
+                        <i class="fas fa-calculator"></i>
+                        <span>Calculate</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="result-box">
+                <h3 class="gpa-results-title">GPA Results</h3>
+                <div id="result">
+                </div>
+                
+                <button class="advanced-button" onclick="toggleAdvancedFields()">
+                    <i class="fas fa-cog"></i> Advanced
+                </button>
+                
+                <div id="advancedFields" class="advanced-fields">
+                    <div class="name-input">
+                        <input type="text" 
+                               id="studentName" 
+                               class="form-control" 
+                               placeholder="Enter your name (Optional)"
+                               maxlength="50">
+                    </div>
+                    <div class="faculty-select">
+                        <div>
+                            <label class="form-label">Faculty</label>
+                            <select class="form-control" id="facultySelect">
+                                <option value="">Select Faculty</option>
+                                <option value="Computer and Information Technology">Computer and Information Technology</option>
+                                <option value="Engineering">Engineering</option>
+                                <option value="Medicine">Medicine</option>
+                                <option value="Pharmacy">Pharmacy</option>
+                                <option value="Nursing">Nursing</option>
+                                <option value="Agriculture">Agriculture</option>
+                                <option value="Veterinary Medicine">Veterinary Medicine</option>
+                                <option value="Science and Arts">Science and Arts</option>
+                                <option value="Applied Medical Sciences">Applied Medical Sciences</option>
+                                <option value="Architecture and Design">Architecture and Design</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="form-label">Specialization</label>
+                            <select class="form-control" id="specializationSelect">
+                                <option value="">Select Specialization</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="advanced-buttons-container">
+                        <div class="download-btn-container">
+                            <button class="download-btn" id="downloadBtn" onclick="downloadResult(event)" disabled>
+                                <svg viewBox="0 0 384 512" height="1em">
+                                    <path fill="currentColor" d="M169.4 470.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 370.8 224 64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 306.7L54.6 265.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"></path>
+                                </svg>
+                            </button>
+                            <div style="margin-top: 5px; font-size: 0.8rem;">Download Result</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p class="copyright">&copy; 2025 Cybersecurity Department - All Rights Reserved</p>
+    </footer>
+
+    <script>
+        let courseCounter = 1;
+        let advancedFieldsVisible = false;
+
+        const gradeValues = {
+            'A+': 4.2, 'A': 4.0, 'A-': 3.75,
+            'B+': 3.5, 'B': 3.25, 'B-': 3.0,
+            'C+': 2.75, 'C': 2.5, 'C-': 2.25,
+            'D+': 2.0, 'D': 1.75, 'D-': 1.0, 
+            'F': 0.0
+        };
+
+        const gradeRanges = {
+            'A+': '95-100%',
+            'A': '85-94%',
+            'A-': '80-84%',
+            'B+': '77-79%',
+            'B': '73-76%',
+            'B-': '70-72%',
+            'C+': '67-69%',
+            'C': '63-66%',
+            'C-': '60-62%',
+            'D+': '57-59%',
+            'D': '53-56%',
+            'D-': '50-52%',
+            'F': 'Below 50%'
+        };
+
+        const specializations = {
+            'Computer and Information Technology': [
+                'Cybersecurity', 'Computer Science', 'Computer Information Systems',
+                'Network Engineering and Security', 'Computer Engineering',
+                'Software Engineering', 'Data Science', 'Artifcial Intelligence',
+                'Internet of Things', 'Computer Games Design and Development'
+            ],
+            'Engineering': [
+                'Chemical Engineering', 'Civil Engineering', 'Electrical Engineering',
+                'Mechanical Engineering', 'Biomedical Engineering', 'Industrial Engineering',
+                'Aeronautical Engineering', 'Aircraft Maintenance Technology',
+                'Water Diplomancy', 'Nuclear Engineering'
+            ],
+            'Medicine': [
+                'Doctor of Medicine', 'Public Health', 'Health Management and Policy'
+            ],
+            'Pharmacy': [
+                'Pharmacy', 'Doctor of Pharmacy', 'Pharmaceutical and Biological Manufacturing'
+            ],
+            'Nursing': [
+                'Nursing', 'Midwifery'
+            ],
+            'Agriculture': [
+                'Animal Production', 'Plant Production', 'Nutrition and Food Technology',
+                'Natural Resources and Environment'
+            ],
+            'Veterinary Medicine': [
+                'Doctor of Veterinary Medicine'
+            ],
+            'Science and Arts': [
+                'Arabic Language', 'English Language and Linguistics', 'Basic Sciences and Humanities',
+                'Mathematics', 'Chemistry', 'Physics', 'Applied Biological Sciences',
+                'Biotechnology and Genetic Engineering'
+            ],
+            'Applied Medical Sciences': [
+                'Paramedics', 'Radiologic Technology', 'Medical Laboratory Sciences',
+                'Dental Technology', 'Allied Dental Sciences', 'Optometry',
+                'Physical Therapy', 'Occupational Therapy', 'Audiology and Speech Phathology',
+                'Clinical Rehabilitation Sceince', 'Respiratory', 'Anesthesia Technology'
+            ],
+            'Architecture and Design': [
+                'Planning and Urban Studies', 'Architecture', 'City planning and Design',
+                'Design and Visual Communication', 'Urban and Environmental Planning Engineering'
+            ]
+        };
+
+        function createStars() {
+            const starsContainer = document.querySelector('.stars-background');
+            const isMobile = window.innerWidth <= 768;
+            const starCount = isMobile ? 50 : 150;
+            
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                
+                const size = Math.random() * 3;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.top = `${Math.random() * 100}%`;
+                
+                const duration = 2 + Math.random() * 3;
+                const delay = Math.random() * 5;
+                star.style.animation = `twinkle ${duration}s ${delay}s infinite`;
+                
+                starsContainer.appendChild(star);
+            }
+        }
+
+        function addCourse() {
+            const newRow = document.createElement('div');
+            newRow.className = 'course-row';
+            newRow.innerHTML = `
+                <div class="input-group">
+                    <div>
+                        <label class="form-label">Course Name</label>
+                        <input type="text" 
+                               class="form-control course-name" 
+                               placeholder="Course ${courseCounter}"
+                               maxlength="50">
+                    </div>
+                    <div>
+                        <label class="form-label">Credits <span class="required-star">*</span></label>
+                        <div class="number-input">
+                            <input type="number" class="form-control credits" 
+                                   min="1" max="9" value="3" required>
+                            <div class="number-controls">
+                                <button class="number-btn" onclick="adjustNumber(this, 1)">▲</button>
+                                <button class="number-btn" onclick="adjustNumber(this, -1)">▼</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="form-label">Grade <span class="required-star">*</span></label>
+                        <select class="form-control form-select grade" required>
+                            <option value="">--</option>
+                            ${Object.keys(gradeValues).filter(k => k).map(g => `
+                                <option value="${g}">${g}</option>
+                            `).join('')}
+                        </select>
+                    </div>
+                </div>
+            `;
+            document.getElementById('courseInputs').appendChild(newRow);
+            courseCounter++;
+        }
+
+        function calculate() {
+            const courses = Array.from(document.querySelectorAll('.course-row'));
+            let currentPoints = 0;
+            let currentCredits = 0;
+            let isValid = true;
+            const studentName = document.getElementById('studentName').value || 'Anonymous';
+            const specialization = document.getElementById('specializationSelect').value || 'Not Specified';
+
+            if (studentName && !/^[a-zA-Z\s]{1,50}$/.test(studentName)) {
+                alert('Name can only contain letters and spaces');
+                return;
+            }
+
+            courses.forEach(row => {
+                const grade = row.querySelector('.grade').value;
+                if (!grade) return;
+
+                const credits = parseFloat(row.querySelector('.credits').value);
+                if (credits >= 1 && credits <= 9 && gradeValues[grade] !== null) {
+                    currentPoints += gradeValues[grade] * credits;
+                    currentCredits += credits;
+                } else {
+                    isValid = false;
+                    row.querySelector('.credits').classList.add('is-invalid');
+                }
+            });
+
+            if (!isValid || currentCredits === 0) {
+                alert('Please check your input data');
+                return;
+            }
+
+            const semesterGPA = currentPoints / currentCredits;
+            const isPassing = semesterGPA >= 2.0;
+            let resultHTML = `
+                <div class="result-item">
+                    <h4>Student Name:</h4>
+                    <p><strong>${studentName}</strong></p>
+                </div>
+                <div class="result-item">
+                    <h4>Specialization:</h4>
+                    <p><strong>${specialization}</strong></p>
+                </div>
+                <div class="result-item">
+                    <h4>Semester Credits:</h4>
+                    <p><strong>${currentCredits}</strong></p>
+                </div>
+                <div class="result-item">
+                    <h4>Semester GPA:</h4>
+                    <p style="color: ${isPassing ? '#00ff88' : '#ff4444'};">
+                        <strong>${semesterGPA.toFixed(2)}</strong>
+                    </p>
+                </div>
+                <div class="result-item">
+                    <h4>Letter Grade:</h4>
+                    <p style="color: ${isPassing ? '#00ff88' : '#ff4444'};">
+                        <strong>${getLetterGrade(semesterGPA)}</strong>
+                    </p>
+                </div>
+                <div class="result-item">
+                    <h4>Percentage Range:</h4>
+                    <p><strong>${gradeRanges[getLetterGrade(semesterGPA)]}</strong></p>
+                </div>
+            `;
+
+            if (document.getElementById('cumulativeToggle').checked) {
+                const prevHours = parseFloat(document.getElementById('previousHours').value) || 0;
+                const prevGPA = parseFloat(document.getElementById('previousGPA').value) || 0;
+                
+                if (prevHours < 0 || prevGPA < 0 || prevGPA > 4.2) {
+                    alert('Invalid cumulative data');
+                    return;
+                }
+
+                const totalPoints = (prevGPA * prevHours) + currentPoints;
+                const totalCredits = prevHours + currentCredits;
+                const cumulativeGPA = totalCredits > 0 ? totalPoints / totalCredits : 0;
+
+                resultHTML += `
+                    <div class="result-separator"></div>
+                    <div class="result-item">
+                        <h4>Total Credits:</h4>
+                        <p><strong>${totalCredits}</strong></p>
+                    </div>
+                    <div class="result-item">
+                        <h4>Cumulative GPA:</h4>
+                        <p style="color: ${cumulativeGPA >= 2.0 ? '#00ff88' : '#ff4444'};">
+                            <strong>${cumulativeGPA.toFixed(2)}</strong>
+                        </p>
+                    </div>
+                    <div class="result-item">
+                        <h4>Cumulative Letter Grade:</h4>
+                        <p style="color: ${cumulativeGPA >= 2.0 ? '#00ff88' : '#ff4444'};">
+                            <strong>${getLetterGrade(cumulativeGPA)}</strong>
+                        </p>
+                    </div>
+                `;
+            }
+
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = resultHTML;
+            document.getElementById('downloadBtn').disabled = false;
+        }
+
+        function getLetterGrade(gpa) {
+            const grades = Object.entries(gradeValues)
+                .filter(([k]) => k)
+                .sort((a, b) => b[1] - a[1]);
+            
+            for (const [grade, value] of grades) {
+                if (gpa >= value) return grade;
+            }
+            return 'F';
+        }
+
+        function resetCourses() {
+            document.getElementById('courseInputs').innerHTML = '';
+            courseCounter = 1;
+            initializeCourses();
+            document.getElementById('result').innerHTML = '<p style="text-align: center; color: var(--secondary-color); margin-top: 20px;">Enter your course details and click Calculate to see your results</p>';
+            document.getElementById('cumulativeFields').style.display = 'none';
+            document.getElementById('cumulativeToggle').checked = false;
+            document.getElementById('previousHours').value = '';
+            document.getElementById('previousGPA').value = '';
+            document.getElementById('studentName').value = '';
+            document.getElementById('facultySelect').value = '';
+            document.getElementById('specializationSelect').innerHTML = '<option value="">Select Specialization</option>';
+            document.getElementById('downloadBtn').disabled = true;
+        }
+
+        function adjustNumber(btn, delta) {
+            const input = btn.closest('.number-input').querySelector('input');
+            let value = parseFloat(input.value) || 0;
+            const step = input.id === 'previousGPA' ? 0.1 : 1;
+            
+            if(input.id === 'previousGPA') {
+                value = Math.max(0, Math.min(4.2, value + (delta * step)));
+                input.value = value.toFixed(2);
+            } else {
+                value = Math.max(input.min || 0, Math.min(input.max || Infinity, value + (delta * step)));
+                input.value = value.toFixed(0);
+            }
+            
+            const event = new Event('input', { bubbles: true });
+            input.dispatchEvent(event);
+        }
+
+        function toggleCumulative() {
+            const toggle = document.getElementById('cumulativeToggle');
+            const cumulativeSection = document.getElementById('cumulativeFields');
+            cumulativeSection.style.display = toggle.checked ? 'block' : 'none';
+        }
+
+        function toggleAdvancedFields() {
+            const advancedFields = document.getElementById('advancedFields');
+            advancedFieldsVisible = !advancedFieldsVisible;
+            
+            if (advancedFieldsVisible) {
+                advancedFields.style.display = 'block';
+            } else {
+                advancedFields.style.display = 'none';
+            }
+        }
+
+        function initializeCourses() {
+            courseCounter = 1;
+            document.getElementById('courseInputs').innerHTML = '';
+            for(let i = 0; i < 3; i++) {
+                addCourse();
+            }
+        }
+
+        document.getElementById('facultySelect').addEventListener('change', function() {
+            const specSelect = document.getElementById('specializationSelect');
+            specSelect.innerHTML = '<option value="">Select Specialization</option>';
+            
+            if(this.value && specializations[this.value]) {
+                specializations[this.value].forEach(spec => {
+                    const option = document.createElement('option');
+                    option.value = spec;
+                    option.textContent = spec;
+                    specSelect.appendChild(option);
+                });
+            }
+        });
+
+        function downloadResult(e) {
+            e.preventDefault();
+            
+            const resultDiv = document.getElementById('result');
+            const studentName = document.getElementById('studentName').value || 'Anonymous';
+            const date = new Date().toLocaleDateString();
+            
+            if (!resultDiv.innerHTML.trim() || resultDiv.innerHTML.includes('Enter your course details')) {
+                alert('No results to download. Please calculate your GPA first.');
+                return;
+            }
+
+            // Create a clone of the result div to capture with styles - Developed by: Bashar Jehad Younis
+            const clone = resultDiv.cloneNode(true);
+            clone.style.position = 'absolute';
+            clone.style.left = '-9999px';
+            clone.style.backgroundColor = 'rgba(10, 10, 42, 0.95)';
+            document.body.appendChild(clone);
+
+            // Configure html2canvas options - Developed by: Bashar Jehad Younis
+            const options = {
+                backgroundColor: 'rgba(10, 10, 42, 0.95)',
+                scale: 2,
+                logging: false,
+                useCORS: true,
+                allowTaint: true
+            };
+
+            // Create the canvas with proper styling - Developed by: Bashar Jehad Younis
+            html2canvas(clone, options).then(canvas => {
+                // Remove the clone
+                document.body.removeChild(clone);
+
+                // Create download link - Developed by: Bashar Jehad Younis
+                const link = document.createElement('a');
+                link.download = `GPA_Result_${studentName}_${date}.png`;
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            createStars();
+            initializeCourses();
+
+            document.getElementById('cumulativeToggle').addEventListener('change', toggleCumulative);
+
+            document.getElementById('previousHours').addEventListener('input', function(e) {
+                this.value = this.value.replace(/[^0-9]/g, '').substring(0, 3);
+                if(parseInt(this.value) > 300) this.value = '300';
+            });
+
+            document.getElementById('previousGPA').addEventListener('input', function(e) {
+                let value = parseFloat(this.value);
+                if (value > 4.2) this.value = 4.2;
+                if (value < 0) this.value = '';
+            });
+        });
+    </script>
+</body>
+<!-- Developed by: Bashar Jehad Younis -->
+</html>
