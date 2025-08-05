@@ -43,6 +43,8 @@ It is strictly prohibited to use, copy, republish, or modify this code in any fo
             --scrollbar-track: rgba(0, 0, 0, 0.3);
             --video-thumb-1: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
             --video-thumb-2: linear-gradient(135deg, #3a7bd5, #00d2ff, #3a7bd5);
+            --competition-color: #ff5722;
+            --competition-active: #ff8c00;
         }
 
         * {
@@ -132,11 +134,11 @@ It is strictly prohibited to use, copy, republish, or modify this code in any fo
             flex-wrap: wrap;
             justify-content: center;
             align-items: center;
-            gap: 2.5rem;
+            gap: 1.5rem;
             padding: 2rem;
             position: relative;
             min-height: 60vh;
-            max-width: 1200px;
+            max-width: 1300px;
             margin: 0 auto;
             flex: 1;
         }
@@ -159,7 +161,7 @@ It is strictly prohibited to use, copy, republish, or modify this code in any fo
             z-index: 2;
             text-decoration: none;
             color: inherit;
-            width: 280px;
+            width: 250px;
             height: 160px;
             text-align: center;
         }
@@ -170,6 +172,20 @@ It is strictly prohibited to use, copy, republish, or modify this code in any fo
             background: rgba(0, 243, 255, 0.1);
         }
 
+        .cyber-button.competition-btn {
+            border-color: var(--competition-color);
+        }
+
+        .cyber-button.competition-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 25px var(--competition-active);
+            background: rgba(255, 87, 34, 0.15);
+        }
+
+        .cyber-button.competition-btn i {
+            color: var(--competition-color);
+        }
+
         .cyber-button i {
             font-size: 2.5em;
             color: var(--secondary-color);
@@ -178,7 +194,7 @@ It is strictly prohibited to use, copy, republish, or modify this code in any fo
 
         .dropdown-container {
             position: relative;
-            width: 280px;
+            width: 250px;
             height: 160px;
         }
 
@@ -218,10 +234,21 @@ It is strictly prohibited to use, copy, republish, or modify this code in any fo
             box-shadow: 0 10px 30px rgba(0, 243, 255, 0.3);
         }
 
+        .dropdown-container.competition-dropdown .dropdown-menu {
+            border-color: var(--competition-color);
+            box-shadow: 0 10px 30px rgba(255, 87, 34, 0.3);
+        }
+
         .dropdown-container.active .dropdown-menu {
             display: flex;
             transform: translateY(0);
             opacity: 1;
+        }
+
+        .dropdown-container.active .competition-btn {
+            background: rgba(255, 87, 34, 0.2);
+            border-color: var(--competition-active);
+            box-shadow: 0 0 25px var(--competition-active);
         }
 
         .dropdown-button {
@@ -243,10 +270,28 @@ It is strictly prohibited to use, copy, republish, or modify this code in any fo
             gap: 12px;
         }
 
+        .dropdown-button.competition-upcoming {
+            border-color: #FF9800;
+        }
+
+        .dropdown-button.competition-running {
+            border-color: #FF9800;
+        }
+
         .dropdown-button:hover {
             background: rgba(0, 243, 255, 0.15);
             box-shadow: 0 0 15px var(--secondary-color);
             transform: translateY(-2px);
+        }
+
+        .dropdown-button.competition-upcoming:hover {
+            background: rgba(255, 152, 0, 0.15);
+            box-shadow: 0 0 15px #FF9800;
+        }
+
+        .dropdown-button.competition-running:hover {
+            background: rgba(255, 152, 0, 0.15);
+            box-shadow: 0 0 15px #FF9800;
         }
 
         .dropdown-button::after {
@@ -269,7 +314,6 @@ It is strictly prohibited to use, copy, republish, or modify this code in any fo
             left: 100%;
         }
 
-        /* Developed by: Bashar Jehad Younis */
         .cyber-modal {
             display: none;
             position: fixed;
@@ -334,7 +378,6 @@ It is strictly prohibited to use, copy, republish, or modify this code in any fo
             to { transform: scale(1); opacity: 1; }
         }
 
-        /* Footer styles - Developed by: Bashar Jehad Younis */
         footer {
             background: #000;
             padding: 1.5rem 2rem;
@@ -354,7 +397,53 @@ It is strictly prohibited to use, copy, republish, or modify this code in any fo
             text-align: center;
         }
 
-        /* Mobile responsiveness - Developed by: Bashar Jehad Younis */
+        .competition-links-info {
+            background: rgba(255, 87, 34, 0.1);
+            border: 1px solid var(--competition-color);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 20px auto;
+            max-width: 800px;
+            text-align: center;
+        }
+        
+        .competition-links-info h3 {
+            color: var(--competition-color);
+            margin-bottom: 10px;
+        }
+        
+        .competition-links-info p {
+            color: #e0e0ff;
+            margin-bottom: 15px;
+        }
+
+        @media (max-width: 1200px) {
+            .buttons-container {
+                max-width: 900px;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .buttons-container {
+                max-width: 800px;
+                gap: 1.2rem;
+            }
+            
+            .cyber-button, .dropdown-container {
+                width: 230px;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .buttons-container {
+                max-width: 700px;
+            }
+            
+            .cyber-button, .dropdown-container {
+                width: 220px;
+            }
+        }
+
         @media (max-width: 768px) {
             .main-header {
                 padding-left: 70px;
@@ -381,6 +470,7 @@ It is strictly prohibited to use, copy, republish, or modify this code in any fo
                 padding: 1.5rem 1rem;
                 justify-content: center;
                 align-items: center;
+                max-width: 100%;
             }
             
             .cyber-button, .dropdown-container {
@@ -432,6 +522,12 @@ It is strictly prohibited to use, copy, republish, or modify this code in any fo
             border-color: var(--accent-color);
             box-shadow: 0 0 25px var(--accent-color);
         }
+        
+        .dropdown-container.active .competition-btn {
+            background: rgba(255, 87, 34, 0.2);
+            border-color: var(--competition-active);
+            box-shadow: 0 0 25px var(--competition-active);
+        }
 
         @media (max-width: 480px) {
             .main-title {
@@ -475,12 +571,9 @@ It is strictly prohibited to use, copy, republish, or modify this code in any fo
     </style>
 </head>
 <body>
-    <!-- Stars background container - Developed by: Bashar Jehad Younis -->
     <div class="stars-background"></div>
 
-    <!-- Main content container - Developed by: Bashar Jehad Younis -->
     <div id="academic-page">
-        <!-- Site header with title and home button - Developed by: Bashar Jehad Younis -->
         <header class="main-header">
             <a href="index.html" class="home-button">
                 <i class="fas fa-home"></i>
@@ -491,9 +584,7 @@ It is strictly prohibited to use, copy, republish, or modify this code in any fo
             </div>
         </header>
 
-        <!-- Main buttons container - Developed by: Bashar Jehad Younis -->
         <div class="buttons-container">
-            <!-- Study Materials button with dropdown - Developed by: Bashar Jehad Younis -->
             <div class="dropdown-container">
                 <div class="cyber-button study-materials-btn">
                     <i class="fas fa-book"></i>
@@ -511,20 +602,34 @@ It is strictly prohibited to use, copy, republish, or modify this code in any fo
                 </div>
             </div>
 
-            <!-- What is CTF button - Developed by: Bashar Jehad Younis -->
+            <div class="dropdown-container competition-dropdown">
+                <div class="cyber-button competition-btn">
+                    <i class="fas fa-trophy"></i>
+                    <span>CTF Competitions</span>
+                </div>
+                <div class="dropdown-menu">
+                    <a href="https://ctftime.org/event/list/?year=2025&online=-1&format=0&restrictions=-1&upcoming=true" target="_blank" class="dropdown-button competition-upcoming">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>Upcoming</span>
+                    </a>
+                    <a href="https://ctftime.org/event/list/?year=2025&online=-1&format=0&restrictions=-1&now=true" target="_blank" class="dropdown-button competition-running">
+                        <i class="fas fa-play-circle"></i>
+                        <span>Now Running</span>
+                    </a>
+                </div>
+            </div>
+
             <a href="#" class="cyber-button" id="what-is-ctf-btn">
                 <i class="fas fa-flag-checkered"></i>
                 <span>What is CTF</span>
             </a>
 
-            <!-- Community button - Developed by: Bashar Jehad Younis -->
             <a href="https://chat.whatsapp.com/CTm7EOHgiWXKBqvOl4ouMB?mode=ac_t" class="cyber-button" target="_blank" rel="noopener">
                 <i class="fab fa-whatsapp"></i>
                 <span>Community</span>
             </a>
         </div>
 
-        <!-- What is CTF modal window - Developed by: Bashar Jehad Younis -->
         <div id="ctf-modal" class="cyber-modal">
             <div class="cyber-modal-content">
                 <span class="close-modal">&times;</span>
@@ -539,17 +644,13 @@ It is strictly prohibited to use, copy, republish, or modify this code in any fo
             </div>
         </div>
 
-        <!-- Site footer - Developed by: Bashar Jehad Younis -->
         <footer>
             <p class="copyright">&copy; 2025 Cybersecurity Department - All Rights Reserved</p>
         </footer>
     </div>
 
-    <!-- JavaScript functionality - Developed by: Bashar Jehad Younis -->
     <script>
-        // Execute when DOM is fully loaded - Developed by: Bashar Jehad Younis
         document.addEventListener('DOMContentLoaded', function() {
-            // Create star background effect - Developed by: Bashar Jehad Younis
             const starsContainer = document.querySelector('.stars-background');
             const starCount = 200;
             
@@ -557,16 +658,13 @@ It is strictly prohibited to use, copy, republish, or modify this code in any fo
                 const star = document.createElement('div');
                 star.className = 'star';
                 
-                // Random star size - Developed by: Bashar Jehad Younis
                 const size = Math.random() * 3;
                 star.style.width = `${size}px`;
                 star.style.height = `${size}px`;
                 
-                // Random position - Developed by: Bashar Jehad Younis
                 star.style.left = `${Math.random() * 100}%`;
                 star.style.top = `${Math.random() * 100}%`;
                 
-                // Random animation properties - Developed by: Bashar Jehad Younis
                 const duration = 2 + Math.random() * 3;
                 const delay = Math.random() * 5;
                 star.style.animation = `twinkle ${duration}s ${delay}s infinite`;
@@ -574,49 +672,56 @@ It is strictly prohibited to use, copy, republish, or modify this code in any fo
                 starsContainer.appendChild(star);
             }
 
-            // Dropdown functionality - Developed by: Bashar Jehad Younis
-            const dropdownContainer = document.querySelector('.dropdown-container');
-            const studyMaterialsBtn = document.querySelector('.study-materials-btn');
-
-            // Close dropdown when clicking outside - Developed by: Bashar Jehad Younis
+            const dropdownContainers = document.querySelectorAll('.dropdown-container');
+            
             document.addEventListener('click', function(e) {
-                if (!dropdownContainer.contains(e.target)) {
-                    dropdownContainer.classList.remove('active');
-                    studyMaterialsBtn.classList.remove('active');
+                dropdownContainers.forEach(container => {
+                    if (!container.contains(e.target)) {
+                        container.classList.remove('active');
+                        const btn = container.querySelector('.cyber-button');
+                        if (btn) btn.classList.remove('active');
+                    }
+                });
+            });
+
+            dropdownContainers.forEach(container => {
+                const btn = container.querySelector('.cyber-button');
+                if (btn) {
+                    btn.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        
+                        dropdownContainers.forEach(other => {
+                            if (other !== container) {
+                                other.classList.remove('active');
+                                other.querySelector('.cyber-button')?.classList.remove('active');
+                            }
+                        });
+                        
+                        container.classList.toggle('active');
+                        this.classList.toggle('active');
+                    });
                 }
             });
 
-            // Toggle dropdown on button click - Developed by: Bashar Jehad Younis
-            studyMaterialsBtn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                dropdownContainer.classList.toggle('active');
-                this.classList.toggle('active');
-            });
-
-            // Modal functionality - Developed by: Bashar Jehad Younis
             const ctfBtn = document.getElementById('what-is-ctf-btn');
             const ctfModal = document.getElementById('ctf-modal');
             const closeCtfModal = document.querySelector('#ctf-modal .close-modal');
             
-            // Open modal - Developed by: Bashar Jehad Younis
             ctfBtn.addEventListener('click', function(e) {
                 e.preventDefault();
                 ctfModal.style.display = 'flex';
             });
             
-            // Close modal with close button - Developed by: Bashar Jehad Younis
             closeCtfModal.addEventListener('click', function() {
                 ctfModal.style.display = 'none';
             });
             
-            // Close modal when clicking outside content - Developed by: Bashar Jehad Younis
             window.addEventListener('click', function(e) {
                 if (e.target === ctfModal) {
                     ctfModal.style.display = 'none';
                 }
             });
             
-            // Close modal with ESC key - Developed by: Bashar Jehad Younis
             document.addEventListener('keydown', function(event) {
                 if (event.key === 'Escape' && ctfModal.style.display === 'flex') {
                     ctfModal.style.display = 'none';
